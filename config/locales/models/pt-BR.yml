@@ -1,0 +1,13 @@
+pt-BR:
+  mongoid:
+    attributes:
+      invoice:
+        name: Nome
+        value: Valor
+        date: Vigência
+        status:
+        comments: Comentários
+    models:
+      invoice:
+        one: Nota
+        other: Notas
