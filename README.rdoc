@@ -1,0 +1,6 @@
+== README
+
+==TODO
+Alerta para inserir valor das notas
+Alerta para vigência contratual
+Alerta para saúde financeira
