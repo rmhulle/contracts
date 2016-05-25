@@ -7,7 +7,7 @@ class Budget
   field :value, type: Float
 
   embedded_in :contract
-  
+
   rails_admin do
 
       navigation_label 'Fiscal'

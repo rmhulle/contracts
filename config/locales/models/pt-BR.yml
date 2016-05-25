@@ -4,10 +4,80 @@ pt-BR:
       invoice:
         name: Nome
         value: Valor
-        date: Vigência
-        status:
+        emission_date: Emissão
+        expiration_date: Vencimento
+        status: Liquidada?
         comments: Comentários
+      accountability:
+        ug: Unidade Gestora
+        subsec: Subsecretaria
+        sector: Gerência
+        accountability_type: Atribuição
+        contract: Contratos
+        user: Servidor
+      budget:
+        name: Número do Empenho
+        date: Data
+        value: Valor (R$)
+      item:
+        name: Nome
+        unity_value: Valor Unitário
+        unity: Unidade
+        quantity: Quantidade
+        item_type: Tipo do Item
+        total_value: Valor Total
+      contract:
+        name: Número do Contrato
+        process_number: Processo
+        object: Objeto
+        finish_date: Fim da Vigência
+        started: Renovação Iniciada?
+        contract_type: Tipo de Contrato
+        start_date: Inicio da Vigência
+        total_value: Valor Global
+        renovation: Renovação
+        total_budget: Total Empenhado
+        total_executed: Total Executado
+        contract_model: Modelo de Contrato
+        situation: Situação Atual
+        vendor: Fornecedor
+        requisition: Solicitação de Abertura
+      vendor:
+        name: Nome
+        cnpj: CNPJ
+        invoices: Notas Fiscais
+        contracts: Contratos
+      requisition:
+        owner: Responsável
+        number: Número da Solicitação
+        requisition_date: Data de Requisição
+        approval_date: Data de Aprovação
+        contract: Contrato
     models:
       invoice:
         one: Nota
         other: Notas
+      accountability:
+        one: Responsável
+        other: Responsáveis
+      budget:
+        one: Empenho
+        other: Empenhos
+      contract:
+        one: Contrato
+        other: Contratos
+      invoice:
+        one: Nota Fiscal
+        other: notas Fiscais
+      item:
+        one: item
+        other: Itens
+      requisition:
+        one: Solicitação de abertura
+        other: Solicitações de abertura
+      user:
+        one: Usuário
+        other: Usuários
+      vendor:
+        one: Fornecedor
+        other: Fornecedores

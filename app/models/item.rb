@@ -10,7 +10,6 @@ class Item
   field :total_value, type: Float
 
   embedded_in :contract
-
   before_save :calc_total_value
 
   rails_admin do

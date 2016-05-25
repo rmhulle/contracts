@@ -21,13 +21,13 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-
+# Banco de Dados Mongo
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
-
+# Autorização e Permissionamento
 gem 'devise'
 gem 'cancancan'
-
+# Interface de Admin
 gem "wysiwyg-rails"
 gem 'icheck-rails'
 gem 'rails_admin_rollincode', :git => 'https://github.com/rmhulle/rails_admin_theme.git'

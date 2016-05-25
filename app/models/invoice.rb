@@ -4,7 +4,8 @@ class Invoice
 
   field :name, type: String
   field :value, type: Float
-  field :date, type: Date
+  field :expiration_date, type: Date
+  field :emission_date, type: Date
   field :status, type: Boolean
   field :comments, type: String
 
@@ -31,7 +32,7 @@ class Invoice
       end
 
       edit do
-        exclude_fields :created_at, :updated_at
+        exclude_fields :created_at, :updated_at, :vendor
       end
 
       show do
@@ -42,4 +43,11 @@ class Invoice
       # end
 
   end
+
+  def associate_vendor
+
+  end
+
+
+
 end

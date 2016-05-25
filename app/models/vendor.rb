@@ -4,8 +4,18 @@ class Vendor
 
   field :name, type: String
   field :cnpj, type: String
-
-
+  field :warning, type: Boolean
+  field :fantasy_name, type: String
+  field :business_name, type: String
+  field :phone, type: String
+  field :email, type: String
+  field :address, type: String
+  field :neighborhood, type: String
+  field :number, type: String
+  field :zipcode, type: String
+  field :complement, type: String
+  field :city, type: String
+  field :state, type: String
 
 
 # Pode ter vários contratos
@@ -21,6 +31,7 @@ class Vendor
 
       list do
         exclude_fields :_id, :created_at, :updated_at
+        field :warning, :toggle
       end
 
       edit do
@@ -39,7 +50,7 @@ class Vendor
   end
 
   def custom_label_method
-    "#{self.name} - #{self.cnpj}"
+    "#{self.business_name}"
   end
 
 end

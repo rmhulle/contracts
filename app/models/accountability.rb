@@ -23,6 +23,12 @@ class Accountability
 
       edit do
         exclude_fields :created_at, :updated_at
+        field :contract do
+          inline_edit false
+        end
+        field :user do
+          inline_edit false
+        end
       end
 
       show do
@@ -41,11 +47,6 @@ class Accountability
       "criando"
     end
   end
-
-  def nil_zero?
-    self.nil? || self == 0 || self == ""
-  end
-
 
   def accountability_type_enum
     ['Administrador', 'Fiscal' ,'Gestor' ,'Vizualizar']
