@@ -48,6 +48,7 @@ class Contract
 # contrato é executado por meio de emissão de notas fiscais.
 
   has_many :invoices
+  has_many :renovations
 
   before_save :calc_total_executed, :calc_total_budget, :calc_total_value
 
@@ -89,7 +90,8 @@ rails_admin do
                        :total_value,
                        :total_executed,
                        :total_budget,
-                       :situation
+                       :situation,
+                       :renovations
 
           field :vendor do
              inline_edit false
