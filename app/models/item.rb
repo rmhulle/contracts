@@ -21,7 +21,7 @@ class Item
       end
 
       edit do
-        exclude_fields :created_at, :updated_at
+        exclude_fields :created_at, :updated_at, :total_value
       end
 
       show do

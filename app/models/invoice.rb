@@ -9,6 +9,7 @@ class Invoice
   field :status, type: Boolean
   field :comments, type: String
 
+before_save :update_total_executed
 
 # só quem pode emitir uma nota é um Fornecedor, e está será sempre vinculada
 # a um contrato. Normalmente um contrato é executado por meio de várias notas
@@ -48,6 +49,12 @@ class Invoice
 
   end
 
+  def update_total_executed
+    idContrato = self.contract._id
+    contrato = Contract.where(id: idContrato).first
+    contrato.total_executed = contrato.invoices.sum(:value) + self.value
+    contrato.save
+  end
 
 
 end

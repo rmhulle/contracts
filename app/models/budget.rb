@@ -6,7 +6,8 @@ class Budget
   field :date, type: Date
   field :value, type: Float
 
-  embedded_in :contract
+  belongs_to :contract
+  before_save :calc_total_budget
 
   rails_admin do
 
@@ -28,4 +29,12 @@ class Budget
       # end
 
   end
+
+  def calc_total_budget
+    idContrato = self.contract._id
+    contrato = Contract.where(id: idContrato).first
+    contrato.total_budget = contrato.budgets.sum(:value) + self.value
+    contrato.save
+  end
+
 end

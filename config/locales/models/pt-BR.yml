@@ -42,6 +42,8 @@ pt-BR:
         situation: Situação Atual
         vendor: Fornecedor
         requisition: Solicitação de Abertura
+        expense_item: Rúbrica
+        observation: Observações
       vendor:
         name: Nome
         cnpj: CNPJ

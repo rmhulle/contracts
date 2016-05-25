@@ -36,7 +36,7 @@ class Contract
 
 # pode ter mais de um empenho
 
-  embeds_many :budgets
+  has_many :budgets
   accepts_nested_attributes_for :budgets
 
 # Contrato pode ter vários responsaveis cada um com seu nível de vizualização
@@ -50,7 +50,7 @@ class Contract
   has_many :invoices
   has_many :renovations
 
-  before_save :calc_total_executed, :calc_total_budget, :calc_total_value
+  before_save :calc_total_value#, :calc_total_budget
 
 rails_admin do
 
@@ -76,9 +76,11 @@ rails_admin do
                        :contract_model,
                        :expense_item,
                        :object,
-                       :vendor
-        field :started, :toggle
-        field :total_value
+                       :vendor,
+                       :renovations
+              field :total_value
+              field :started, :toggle
+
       end
 
       edit do
@@ -91,7 +93,8 @@ rails_admin do
                        :total_executed,
                        :total_budget,
                        :situation,
-                       :renovations
+                       :renovations,
+                       :budgets
 
           field :vendor do
              inline_edit false
@@ -110,18 +113,21 @@ rails_admin do
       # end
 
   end
+
+#TODO Pegar do Siga
   def contract_type_enum
     ['Normal','Aditivo Prazo','Aditivo Valor','Emergêncial']
   end
-
+#TODO pegar do Siga
+  def contract_model_enum
+    ['Adesão de ATA','Inexigibilidade','Pregão Eletrônico','Pregão Presencial',
+    'Dispensa de Licitação - ART 24 - IV']
+  end
   def contract_model_enum
     ['Adesão de ATA','Inexigibilidade','Pregão Eletrônico','Pregão Presencial',
     'Dispensa de Licitação - ART 24 - IV']
   end
 
-  def calc_total_budget
-    self.total_budget = self.budgets.sum(:value)
-  end
 
   def calc_total_executed
     self.total_executed = self.invoices.sum(:value)
