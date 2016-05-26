@@ -43,6 +43,7 @@ pt-BR:
         vendor: Fornecedor
         requisition: Solicitação de Abertura
         expense_item: Rúbrica
+        contract: Contrato
         observation: Observações
       vendor:
         name: Nome
@@ -54,8 +55,17 @@ pt-BR:
         number: Número da Solicitação
         requisition_date: Data de Requisição
         approval_date: Data de Aprovação
+      renovation:
+        change_date: Data da alteração
+        change_description: Descrição
+        formalization: Tipo de Formalização
+        change_value: Valor
+        change_type: Tipo da Alteração
         contract: Contrato
     models:
+      renovation:
+        one: Alteração/Aditivo
+        other: Alterações/Aditivos
       invoice:
         one: Nota
         other: Notas
