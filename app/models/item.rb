@@ -39,4 +39,8 @@ private
         self.total_value = (self.unity_value * self.quantity)
       end
 
+      def calc_total_value # Calcula o valor total do Item
+
+      end
+
 end

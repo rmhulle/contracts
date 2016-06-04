@@ -1,6 +1,7 @@
 class Contract
   include Mongoid::Document
 
+
   field :name, type: String
   field :process_number, type: String
   field :object, type: String
@@ -11,8 +12,8 @@ class Contract
   field :finish_date, type: Date #vigencia fim
   field :contract_type, type: String # tipo de contrato
   field :contract_model, type: String # Tipo de licitação
-
-
+  field :law_enforcement, type: String
+  field :continum, type: String
 
   field :total_value, type: Float # Valor global do contrato
   field :total_budget, type: Float # valor total do empenho
@@ -80,7 +81,9 @@ rails_admin do
                        :renovations
               field :total_value
               field :started, :toggle
-
+              field :law_enforcement do
+                help 'Enquadra-se no Art 24 Inciso IV?'
+              end
       end
 
       edit do
@@ -114,20 +117,25 @@ rails_admin do
 
   end
 
+
+
+
+
 #TODO Pegar do Siga
+
   def contract_type_enum
-    ['Normal','Aditivo Prazo','Aditivo Valor','Emergêncial']
-  end
-#TODO pegar do Siga
-  def contract_model_enum
-    ['Adesão de ATA','Inexigibilidade','Pregão Eletrônico','Pregão Presencial',
-    'Dispensa de Licitação - ART 24 - IV']
-  end
-  def contract_model_enum
-    ['Adesão de ATA','Inexigibilidade','Pregão Eletrônico','Pregão Presencial',
-    'Dispensa de Licitação - ART 24 - IV']
+    ['ART 24 - IV','Outros']
   end
 
+#TODO pegar do Siga
+
+  def contract_model_enum
+    ['Concorrência', 'Tomada de Preço', 'Convite', 'Compra Direta', 'Inexigibilidade','Pregão Eletrônico','Pregão Presencial',
+    'Dispensa de Licitação']
+  end
+  def law_enforcement_enum
+    ['Judicializado', 'Não Judicializado']
+  end
 
   def calc_total_executed
     self.total_executed = self.invoices.sum(:value)
@@ -136,8 +144,9 @@ rails_admin do
     self.total_value = self.items.sum(:total_value)
   end
 
-
-private
+ def continum_enum
+   ['Contrato Continuado', 'Não Continuado']
+ end
 
 
 end

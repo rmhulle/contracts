@@ -21,10 +21,12 @@ RailsAdmin.config do |config|
 
   config.actions do
     dashboard                     # mandatory
-    index                         # mandatory
+    index
+    charts# mandatory
     new
     export
     import
+
   # bulk_delete
     show
     edit

@@ -2,20 +2,21 @@ class Vendor
   include Mongoid::Document
 
 
-  field :name, type: String
+  field :business_name, type: String
+  # field :name, type: String
   field :cnpj, type: String
   field :warning, type: Boolean
-  field :fantasy_name, type: String
-  field :business_name, type: String
-  field :phone, type: String
-  field :email, type: String
-  field :address, type: String
-  field :neighborhood, type: String
-  field :number, type: String
-  field :zipcode, type: String
-  field :complement, type: String
-  field :city, type: String
-  field :state, type: String
+  # field :fantasy_name, type: String
+
+  # field :phone, type: String
+  # field :email, type: String
+  # field :address, type: String
+  # field :neighborhood, type: String
+  # field :number, type: String
+  # field :zipcode, type: String
+  # field :complement, type: String
+  # field :city, type: String
+  # field :state, type: String
 
 
 # Pode ter vários contratos

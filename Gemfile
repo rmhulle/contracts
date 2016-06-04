@@ -36,6 +36,7 @@ gem "rails_admin_import", "~> 1.4"
 gem 'rails_admin_toggleable'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'rails_admin_charts'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

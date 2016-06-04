@@ -32,19 +32,20 @@ pt-BR:
         object: Objeto
         finish_date: Fim da Vigência
         started: Renovação Iniciada?
-        contract_type: Tipo de Contrato
+        contract_type: Art 24, IV?
         start_date: Inicio da Vigência
         total_value: Valor Global
         renovation: Renovação
         total_budget: Total Empenhado
         total_executed: Total Executado
-        contract_model: Modelo de Contrato
+        contract_model: Modalidade de Contratação
         situation: Situação Atual
         vendor: Fornecedor
         requisition: Solicitação de Abertura
         expense_item: Rúbrica
         contract: Contrato
         observation: Observações
+        law_enforcement: Judicializado?
       vendor:
         name: Nome
         cnpj: CNPJ
