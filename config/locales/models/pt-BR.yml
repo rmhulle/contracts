@@ -1,6 +1,58 @@
 pt-BR:
   mongoid:
     attributes:
+      amendment:
+        name: Número do Aditivo
+        amendment_type: Tipo do Aditivo
+        publication_date: Data de Publicação
+        activity: Atividade
+        expense_item: Item de Despesa
+        account_source: Fonte de Despesa
+        object: Objeto
+        process_number: Número do Processo
+        amendment_value: Valor do Aditivo
+        start_date: Início da Vigência
+        finish_date: Fim da Vigência
+        contract: Contrato
+        observation: Observações
+      addition:
+        name: Número do Apostilamento
+        object: Objeto
+        description: Descrição
+        adjustment_percentage: Percentual de Reajuste
+        start_date: Data de Início do Reajuste
+        contract: Contrato
+        adjustment_total_value: Valor Total do Reajuste
+      closure:
+        name: Documento Identificação
+        closure_type: Tipo de Encerramento
+        closure_date: Data de Encerramento
+        contractual_balance: Saldo Residual
+        contract: Contrato
+      fine:
+        name: Número da Penalidade
+        fine_type: Tipo de Sanção
+        execution_date: Data de Sanção
+        justification: Motivo
+        process_number: Número do Processo
+        contract: Contrato
+      notification:
+        name: Número da Notificação
+        justification: Justificativa
+        process_number: Número do Processo
+        contract: Contrato
+      reratification:
+        name: Número da notificação
+        object: Objeto
+        publication_date: Data de Publicação
+        sign_date: Data de Assinatura
+        contract: Contrato
+      termination:
+        name: Número da Rescisão
+        justification: Motivo
+        process_number: Número do Processo
+        publication_date: Data de Publicação
+        contract: Contrato
       invoice:
         name: Nome
         value: Valor
@@ -8,64 +60,67 @@ pt-BR:
         expiration_date: Vencimento
         status: Liquidada?
         comments: Comentários
+        contract: Contrato
       accountability:
         ug: Unidade Gestora
-        subsec: Subsecretaria
         sector: Gerência
         accountability_type: Atribuição
         contract: Contratos
         user: Servidor
+        document_type: Tipo de Documento
+        lore_date: Data de Ciência
+        supervisor_change: Observações
+        active: Fiscal Vigente
       budget:
         name: Número do Empenho
         date: Data
         value: Valor (R$)
-      item:
-        name: Nome
-        unity_value: Valor Unitário
-        unity: Unidade
-        quantity: Quantidade
-        item_type: Tipo do Item
-        total_value: Valor Total
       contract:
+        contract_model: Modalidade de Licitação
         name: Número do Contrato
-        process_number: Processo
+        sign_date: Data de Assinatura
+        publication_date: Data de Publicação
+        activity: Atividade
+        expense_item: item de Despesa
+        account_source: Fonte de Despesa
         object: Objeto
+        requesting: Setor Solicitante
+        process_number: Número do Processo
+        start_value: Valor Inicial
+        continuum_service: Serviço continuado
+        start_date: Início da Vigência
         finish_date: Fim da Vigência
-        started: Renovação Iniciada?
-        contract_type: Tipo de Contrato
-        start_date: Inicio da Vigência
-        total_value: Valor Global
-        renovation: Renovação
-        total_budget: Total Empenhado
-        total_executed: Total Executado
-        contract_model: Modelo de Contrato
-        situation: Situação Atual
-        vendor: Fornecedor
-        requisition: Solicitação de Abertura
-        expense_item: Rúbrica
-        contract: Contrato
         observation: Observações
+        vendor: Fornecedor
+        contract: Contrato
       vendor:
         name: Nome
         cnpj: CNPJ
         invoices: Notas Fiscais
         contracts: Contratos
-      requisition:
-        owner: Responsável
-        number: Número da Solicitação
-        requisition_date: Data de Requisição
-        approval_date: Data de Aprovação
-      renovation:
-        change_date: Data da alteração
-        change_description: Descrição
-        formalization: Tipo de Formalização
-        change_value: Valor
-        change_type: Tipo da Alteração
-        contract: Contrato
+        warning: Alerta
     models:
-      renovation:
-        one: Alteração/Aditivo
-        other: Alterações/Aditivos
+      addition:
+        one: Apostilamento
+        other: Apostilamentos
+      amendment:
+        one: Aditivo
+        other: Aditivos
+      closure:
+        one: Encerramento
+        other: Encerramentos
+      fine:
+        one: Penalidade
+        other: Penalidades
+      notification:
+        one: Notificação
+        other: Notificações
+      reratification:
+        one: Rerratificação
+        other: Rerratificações
+      termination:
+        one: Rescisão
+        other: Rescisões
       invoice:
         one: Nota
         other: Notas
@@ -79,8 +134,8 @@ pt-BR:
         one: Contrato
         other: Contratos
       invoice:
-        one: Nota Fiscal
-        other: notas Fiscais
+        one: Medicão
+        other: Medições
       item:
         one: item
         other: Itens

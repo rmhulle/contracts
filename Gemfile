@@ -27,13 +27,15 @@ gem 'bson_ext'
 # Autorização e Permissionamento
 gem 'devise'
 gem 'cancancan'
-# Interface de Admin
+gem 'jquery-inputmask-rails'
+## Interface de Admin
 gem "wysiwyg-rails"
 gem 'icheck-rails'
 gem 'rails_admin_rollincode', :git => 'https://github.com/rmhulle/rails_admin_theme.git'
 gem 'rails_admin'
 gem "rails_admin_import", "~> 1.4"
 gem 'rails_admin_toggleable'
+gem "mask_validator"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

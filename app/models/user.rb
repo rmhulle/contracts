@@ -9,7 +9,8 @@ class User
    #campos classificatorios
   field :functional_id,   type: String
   field :name,            type: String
-
+  field :job_role,        type: String
+  field :telphone,        type: String
 
   ## Database authenticatable
   field :email,              type: String, default: ""

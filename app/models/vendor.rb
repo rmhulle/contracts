@@ -5,24 +5,9 @@ class Vendor
   field :name, type: String
   field :cnpj, type: String
   field :warning, type: Boolean
-  field :fantasy_name, type: String
-  field :business_name, type: String
-  field :phone, type: String
-  field :email, type: String
-  field :address, type: String
-  field :neighborhood, type: String
-  field :number, type: String
-  field :zipcode, type: String
-  field :complement, type: String
-  field :city, type: String
-  field :state, type: String
-
 
 # Pode ter vários contratos
   has_many :contracts, inverse_of: :vendor
-
-#um Vendedor executa um contrato por meio de emissão de vária notas
-
   has_many :invoices
 
   rails_admin do
@@ -35,6 +20,9 @@ class Vendor
       end
 
       edit do
+        field :name
+        field :cnpj, :string
+        field :warning
         exclude_fields :created_at, :updated_at, :contracts, :invoices
       end
 
@@ -50,7 +38,7 @@ class Vendor
   end
 
   def custom_label_method
-    "#{self.business_name}"
+    "#{self.name}"
   end
 
 end

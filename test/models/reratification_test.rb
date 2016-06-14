@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RequisitionTest < ActiveSupport::TestCase
+class ReratificationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

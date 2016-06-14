@@ -1,109 +1,115 @@
 class Contract
   include Mongoid::Document
 
-  field :name, type: String
-  field :process_number, type: String
-  field :object, type: String
-  field :expense_item, type: String # Rubrica
-  field :observation, type: String #renovações?
+  field :contract_model, type: String # modalidade de licitação
+  field :name, type: String # Numero do contratos
+  field :sign_date, type: Date  # Data de Assinatura
+  field :publication_date, type: Date  # Data de Assinatura
+
+  # Dotação Orçamentárias
+
+  field :activity, type: String # Atividade
+  field :expense_item, type: String # Item de Despesa
+  field :account_source, type: String # Fonte de Despesa
+
+  field :object, type: String # Objeto do contrato
+
+  field :requesting, type: String # Setor Solicitante, deverá ser uma lista padronizada
+
+  field :process_number, type: String # Número do processo
+
+  # Valores do Contrato
+  field :start_value, type: Float # Valor Incial do contrato
+
+  field :continuum_service, type: Boolean # é Serviço continuado?
 
   field :start_date, type: Date  #vigencia inicio
   field :finish_date, type: Date #vigencia fim
-  field :contract_type, type: String # tipo de contrato
-  field :contract_model, type: String # Tipo de licitação
+
+  field :observation, type: String # Observações
 
 
+# Variáveis para uso do sistema
 
-  field :total_value, type: Float # Valor global do contrato
-  field :total_budget, type: Float # valor total do empenho
-  field :total_executed, type: Float # Total executado (soma das notas já executadas)
-  field :started, type: Boolean # Já iniciou o processo de renovação?
-  field :situation, type: String # Situação atual
+  field :total_value, type: Float # Valor global do contrato Será a Soma de Todos Aditivos, Apostilamentos e Valor inicial do Contrato
+  field :total_budget, type: Float # Valor total do empenho
+  field :total_executed , type: Float # Total executado (soma das notas já executadas)
 
-
-# Um contrato tem vário items, como não existe relacionamento externo,
-# vamos colcar um item dentro do proprio Contrato.
-  embeds_many :items, cascade_callbacks: true
-  accepts_nested_attributes_for :items
-
-# Um contrato tem um único fornecedor
 
   belongs_to :vendor, inverse_of: :contract
 
 
-  belongs_to :requisition
-  validates :requisition, :presence => true
-
-# pode ter mais de um empenho
-
   has_many :budgets
   accepts_nested_attributes_for :budgets
 
-# Contrato pode ter vários responsaveis cada um com seu nível de vizualização
-# NECL, Gestor, Fiscal
-# TODO Fazer as bindings pra cada permissão de vizualização
-
-  has_many :accountabilities, inverse_of: :contract, dependent: :destroy
-
-# contrato é executado por meio de emissão de notas fiscais.
 
   has_many :invoices
-  has_many :renovations
 
-  before_save :calc_total_value#, :calc_total_budget
+  has_many :additions
+  has_many :amendment
+  has_many :closures
+  has_many :fines
+  has_many :notifications
+  has_many :reratifications
+  has_many :terminations
+
+
+# Validações
+
+
+  # validates :contract_model, presence: true
+  # validates :name, presence: true
+  # validates :sign_date, presence: true
+  # validates :publication_date, presence: true
+  # validates :activity, presence: true
+  # validates :expense_item, presence: true
+  # validates :account_source, presence: true
+  # validates :object, presence: true
+  # validates :requesting, presence: true
+  # validates :process_number, presence: true
+  # validates :start_value, presence: true
+  # validates :start_date, presence: true
+  # validates :finish_date, presence: true
+#  validates :observation, presence: true
+
 
 rails_admin do
 
       navigation_label 'NECL'
 
       list do
-        exclude_fields :_id,
-                       :created_at,
-                       :updated_at,
-                       :budgets,
-                       :items,
-                       :accountabilities,
-                       :invoices,
-                       :started,
-                       :contract_type,
-                       :start_date,
-                       :total_value,
-                       :renovation,
-                       :requisition,
-                       :situation,
-                       :observation,
-                       :process_number,
-                       :contract_model,
-                       :expense_item,
-                       :object,
-                       :vendor,
-                       :renovations
-              field :total_value
-              field :started, :toggle
-
+        field :name
       end
 
       edit do
-        exclude_fields :created_at,
-                       :updated_at,
-                       :accountabilities,
-                       :invoices,
-                       :started,
-                       :total_value,
-                       :total_executed,
-                       :total_budget,
-                       :situation,
-                       :renovations,
-                       :budgets
+        field :contract_model
+        field :name, :string
+        field :sign_date
+        field :publication_date
 
-          field :vendor do
-             inline_edit false
-           end
-           field :requisition do
-              inline_edit false
-              inline_add false
-            end
+        field :activity, :string
+        field :expense_item, :string
+        field :account_source, :string
+
+        field :object
+        field :vendor do
+           inline_edit false
         end
+
+        field :requesting, :string # Trocar por um binding de uma lista
+
+        field :process_number, :string
+
+        field :start_value
+        field :continuum_service
+
+        field :start_date
+        field :finish_date
+
+        field :observation
+
+
+      end
 
       show do
         exclude_fields :id, :created_at, :updated_at
@@ -114,30 +120,19 @@ rails_admin do
 
   end
 
-#TODO Pegar do Siga
-  def contract_type_enum
-    ['Normal','Aditivo Prazo','Aditivo Valor','Emergêncial']
-  end
-#TODO pegar do Siga
   def contract_model_enum
-    ['Adesão de ATA','Inexigibilidade','Pregão Eletrônico','Pregão Presencial',
-    'Dispensa de Licitação - ART 24 - IV']
+    [ 'Concorrência',
+      'Tomada de Preços',
+      'Pregão',
+      'Emergencial (art. 24, IV)',
+      'Dispensa',
+      'Inexigibilidade']
   end
-  def contract_model_enum
-    ['Adesão de ATA','Inexigibilidade','Pregão Eletrônico','Pregão Presencial',
-    'Dispensa de Licitação - ART 24 - IV']
-  end
-
 
   def calc_total_executed
     self.total_executed = self.invoices.sum(:value)
   end
-  def calc_total_value
-    self.total_value = self.items.sum(:total_value)
-  end
 
-
-private
 
 
 end

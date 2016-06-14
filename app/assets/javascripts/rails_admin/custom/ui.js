@@ -1,3 +1,9 @@
+//= require jquery.inputmask
+//= require jquery.inputmask.extensions
+//= require jquery.inputmask.numeric.extensions
+//= require jquery.inputmask.date.extensions
+//= require_tree .
+
 // //= require icheck
 //
 // $(document).on('ready pjax:success', function() {

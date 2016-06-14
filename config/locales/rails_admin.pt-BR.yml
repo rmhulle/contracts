@@ -137,3 +137,102 @@ pt-BR:
         default_col_sep: ","
         col_sep: "Separador de colunas"
         col_sep_help: "Deixar em branco para usar omissão ('%{value}')" # value is default_col_sep
+    help:
+      amendment:
+        name: Número do Aditivo
+        amendment_type: Tipo do Aditivo
+        publication_date: Data de Publicação
+        activity: Atividade
+        expense_item: Item de Despesa
+        account_source: Fonte de Despesa
+        object: Objeto
+        process_number: Número do Processo
+        amendment_value: Valor do Aditivo
+        start_date: Início da Vigência
+        finish_date: Fim da Vigência
+        contract: Contrato
+        observation: Observações
+      addition:
+        name: Número do Apostilamento
+        object: Objeto
+        description: Descrição
+        adjustment_percentage: Percentual de Reajuste
+        start_date: Data de Início do Reajuste
+        contract: Contrato
+        adjustment_total_value: Valor Total do Reajuste
+      closure:
+          name: Documento Identificação
+          closure_type: Tipo de Encerramento
+          closure_date: Data de Encerramento
+          contractual_balance: Saldo Residual
+          contract: Contrato
+      fine:
+          name: Número da Penalidade
+          fine_type: Tipo de Sanção
+          execution_date: Data de Sanção
+          justification: Motivo
+          process_number: Número do Processo
+          contract: Contrato
+      notification:
+          name: Número da Notificação
+          justification: Justificativa
+          process_number: Número do Processo
+          contract: Contrato
+      reratification:
+          name: Número da notificação
+          object: Objeto
+          publication_date: Data de Publicação
+          sign_date: Data de Assinatura
+          contract: Contrato
+      termination:
+          name: Número da Rescisão
+          justification: Motivo
+          process_number: Número do Processo
+          publication_date: Data de Publicação
+          contract: Contrato
+      invoice:
+          name: Nome
+          value: Valor
+          emission_date: Emissão
+          expiration_date: Vencimento
+          status: Liquidada?
+          comments: Comentários
+          contract: Contrato
+      accountability:
+          ug: Unidade Gestora
+          sector: Gerência
+          accountability_type: Atribuição
+          contract: Contratos
+          user: Servidor
+          document_type: Tipo de Documento
+          lore_date: Data de Ciência
+          supervisor_change: Observações
+          active: Fiscal Vigente
+      budget:
+          name: Número do Empenho
+          date: Data
+          value: Valor (R$)
+      contract:
+          contract_model: Modalidade de Licitação
+          name: Número do Contrato
+          sign_date: Data de Assinatura
+          publication_date: Data de Publicação
+          activity: Atividade
+          expense_item: item de Despesa
+          account_source: Fonte de Despesa
+          object: Objeto
+          requesting: Setor Solicitante
+          process_number: Número do Processo
+          start_value: Valor Inicial
+          continuum_service: Serviço continuado
+          start_date: Início da Vigência
+          finish_date: Fim da Vigência
+          observation: Observações
+          vendor: Fornecedor
+          contract: Contrato
+      vendor:
+          name: Nome
+          cnpj: CNPJ
+          invoices: Notas Fiscais
+          contracts: Contratos
+          warning: Alerta
