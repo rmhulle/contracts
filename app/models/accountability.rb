@@ -11,7 +11,11 @@ class Accountability
   field :active,               type: Boolean
 
   belongs_to :user
-  belongs_to :contract, dependent: :destroy
+
+  belongs_to :contract, dependent: :destroy, :inverse_of => :accountability
+
+
+  before_save :update_contract
 
   rails_admin do
 
@@ -47,6 +51,17 @@ class Accountability
       "criando"
     end
   end
+
+  def update_contract
+
+    contrato = Contract.where(id: self.contract_id).first
+
+    contrato.user_id = self.user_id
+
+    contrato.save!
+    
+  end
+
 
   def accountability_type_enum
     ['Fiscal' ,'Gestor' ,'Vizualizar']

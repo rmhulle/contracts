@@ -29,11 +29,28 @@ before_save :update_total_executed
 
       list do
         exclude_fields :_id, :created_at, :updated_at, :comments
+
         field :status, :toggle
       end
 
       edit do
         exclude_fields :created_at, :updated_at, :vendor
+        field :contract do
+          # associated_collection_cache_all false
+          associated_collection_scope do
+            # bindings[:object] & bindings[:controller] are available, but not in scope's block!
+            user_now = bindings[:controller].current_user.id
+
+            Proc.new { |scope|
+              #Rodrigo = bindings[:view].current_user
+              #Contract.includes(:accountability).where(user_id: bindings[:view].current_user.id)
+              # scope = scope.where(league_id: team.league_id) if team.present?
+              #scope = Contract.includes(:accountability).where(user_id: bindings[:view].current_user.id)
+              scope = Contract.where(user_id: user_now)
+            }
+
+    end
+        end
       end
 
       show do

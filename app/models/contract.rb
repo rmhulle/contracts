@@ -27,20 +27,21 @@ class Contract
   field :finish_date, type: Date #vigencia fim
 
   field :observation, type: String # Observações
-
+  field :user_id
 
 # Variáveis para uso do sistema
 
   field :total_value, type: Float # Valor global do contrato Será a Soma de Todos Aditivos, Apostilamentos e Valor inicial do Contrato
   field :total_budget, type: Float # Valor total do empenho
-  field :total_executed , type: Float # Total executado (soma das notas já executadas)
+  field :total_executed, type: Float # Total executado (soma das notas já executadas)
+
 
 
   belongs_to :vendor, inverse_of: :contract
 
 
+
   has_many :budgets
-  accepts_nested_attributes_for :budgets
 
 
   has_many :invoices
@@ -53,9 +54,15 @@ class Contract
   has_many :reratifications
   has_many :terminations
 
+  has_one :accountability, :inverse_of => :contract
 
 # Validações
-
+  def accountability_id
+    self.accountability.try :id
+  end
+  def accountability_id=(id)
+    self.draft = Accountability.find_by_id(id)
+  end
 
   # validates :contract_model, presence: true
   # validates :name, presence: true
@@ -72,13 +79,16 @@ class Contract
   # validates :finish_date, presence: true
 #  validates :observation, presence: true
 
-
 rails_admin do
 
       navigation_label 'NECL'
 
       list do
+        scopes [nil, :Emergencial, :Prazo]
         field :name
+        field :contract_model
+        field :publication_date
+        field :object
       end
 
       edit do
@@ -133,6 +143,8 @@ rails_admin do
     self.total_executed = self.invoices.sum(:value)
   end
 
+  scope :Emergencial, -> { where(contract_model: 'Emergencial (art. 24, IV)') }
+  scope :Prazo, -> { where( :finish_date => { :$lte => Time.now + 120.days}) }
 
 
 end

@@ -44,6 +44,7 @@ class User
 
 
   has_many :accountabilities, inverse_of: :user
+  #has_many :contracts, inverse_of: :user
 
   rails_admin do
 
