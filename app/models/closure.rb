@@ -14,7 +14,10 @@ class Closure
       navigation_label 'Eventos'
 
       list do
-
+        field :name
+        field :closure_type
+        field :closure_date
+        field :contractual_balance
       end
 
       edit do

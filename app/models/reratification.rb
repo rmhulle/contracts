@@ -13,6 +13,10 @@ class Reratification
       navigation_label 'Eventos'
 
       list do
+        field :name
+        field :object
+        field :publication_date
+        field :contract
       end
 
       edit do

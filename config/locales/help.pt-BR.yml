@@ -1,5 +1,0 @@
-pt-BR:
-  admin:
-    help:
-      contract:
-        continuum_service: '%{help} Selecione para indicar serviços de carater continuo'

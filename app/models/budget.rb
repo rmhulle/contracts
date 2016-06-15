@@ -5,6 +5,7 @@ class Budget
   field :name, type: String
   field :date, type: Date
   field :value, type: Float
+  field :user_id
 
   belongs_to :contract
   before_save :calc_total_budget
@@ -14,11 +15,30 @@ class Budget
       navigation_label 'Fiscal'
 
       list do
-        exclude_fields :_id, :created_at, :updated_at
+        field :name
+        field :date
+        field :value
+        field :contract
       end
 
       edit do
         exclude_fields :created_at, :updated_at
+        field :user_id, :hidden do
+          visible false
+          default_value do
+            bindings[:view]._current_user.id
+          end
+        end
+        field :contract do
+          associated_collection_scope do
+            user_now = bindings[:controller].current_user.id
+
+            Proc.new { |scope|
+              scope = Contract.where(user_id: user_now)
+              }
+
+          end
+        end
       end
 
       show do

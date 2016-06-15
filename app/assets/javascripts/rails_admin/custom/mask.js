@@ -18,9 +18,18 @@ $(document).ready( function() {
 
  $("#budget_name").inputmask("9999NE99999");
 
+ $("#budget_name").inputmask("9999NE99999");
+
+ $("#invoice_name").inputmask("9999/99999");
+ $("#invoice_competency_date").inputmask("99/9999");
+ $("#invoice_process_number").inputmask("99999999");
+
+
+ $("#fine_name").inputmask("999/9999");
+ $("#notification_name").inputmask("999/9999");
 //52.990.745/0001-49
 
-
+//$( window ).load( readyFn );
 //$("#contract_start_value").inputmask({mask : "9999999999", numericInput: true });
 
 });

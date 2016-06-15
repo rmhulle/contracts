@@ -14,7 +14,9 @@ class Notification
       navigation_label 'Eventos'
 
       list do
-
+        field :name
+        field :process_number
+        field :contract
       end
 
       edit do

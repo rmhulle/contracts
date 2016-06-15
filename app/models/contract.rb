@@ -2,6 +2,7 @@ class Contract
   include Mongoid::Document
 
   field :contract_model, type: String # modalidade de licitação
+  field :contract_type,  type: String # Tipo de Instrumento
   field :name, type: String # Numero do contratos
   field :sign_date, type: Date  # Data de Assinatura
   field :publication_date, type: Date  # Data de Assinatura
@@ -11,7 +12,7 @@ class Contract
   field :activity, type: String # Atividade
   field :expense_item, type: String # Item de Despesa
   field :account_source, type: String # Fonte de Despesa
-
+  field :object_type, type: String
   field :object, type: String # Objeto do contrato
 
   field :requesting, type: String # Setor Solicitante, deverá ser uma lista padronizada
@@ -36,16 +37,9 @@ class Contract
   field :total_executed, type: Float # Total executado (soma das notas já executadas)
 
 
-
   belongs_to :vendor, inverse_of: :contract
-
-
-
   has_many :budgets
-
-
   has_many :invoices
-
   has_many :additions
   has_many :amendment
   has_many :closures
@@ -53,8 +47,7 @@ class Contract
   has_many :notifications
   has_many :reratifications
   has_many :terminations
-
-  has_one :accountability, :inverse_of => :contract
+  has_one :accountability, :inverse_of => :contract #Fiscal responsáel
 
 # Validações
   def accountability_id
@@ -79,6 +72,9 @@ class Contract
   # validates :finish_date, presence: true
 #  validates :observation, presence: true
 
+  before_create :calc_total_value
+
+
 rails_admin do
 
       navigation_label 'NECL'
@@ -87,42 +83,42 @@ rails_admin do
         scopes [nil, :Emergencial, :Prazo]
         field :name
         field :contract_model
-        field :publication_date
-        field :object
+        field :object_type
+        field :finish_date
+        field :total_value do
+           formatted_value{ "R$ #{value}" }
+        end
+        field :accountability
       end
 
       edit do
         field :contract_model
+        field :contract_type
         field :name, :string
         field :sign_date
         field :publication_date
-
         field :activity, :string
         field :expense_item, :string
         field :account_source, :string
-
+        field :object_type
         field :object
         field :vendor do
            inline_edit false
         end
-
         field :requesting, :string # Trocar por um binding de uma lista
-
         field :process_number, :string
-
         field :start_value
         field :continuum_service
-
         field :start_date
         field :finish_date
-
         field :observation
 
 
       end
 
       show do
-        exclude_fields :id, :created_at, :updated_at
+        exclude_fields :id, :created_at, :updated_at, :user_id
+
       end
       # object_label_method do
       #   :custom_label_method
@@ -138,9 +134,23 @@ rails_admin do
       'Dispensa',
       'Inexigibilidade']
   end
+  def contract_type_enum
+    [ 'Contrato',
+      'Termo de Adesão',
+      'Ata de Registro']
+  end
+  def object_type_enum
+    [ 'Serviços',
+      'Aquisições',
+      'Locações']
+  end
 
   def calc_total_executed
     self.total_executed = self.invoices.sum(:value)
+  end
+
+  def calc_total_value
+    self.total_value = self.start_value
   end
 
   scope :Emergencial, -> { where(contract_model: 'Emergencial (art. 24, IV)') }

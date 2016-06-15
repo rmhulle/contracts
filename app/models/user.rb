@@ -11,6 +11,7 @@ class User
   field :name,            type: String
   field :job_role,        type: String
   field :telphone,        type: String
+  field :role,            type: String
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -51,44 +52,38 @@ class User
       navigation_label 'Administrador'
 
       list do
-        exclude_fields :_id,
-                        :created_at,
-                        :updated_at,
-                        :sign_in_count,
-                        :current_sign_in_at,
-                        :last_sign_in_at,
-                        :current_sign_in_ip,
-                        :last_sign_in_ip,
-                        :remember_created_at,
-                        :reset_password_sent_at
+        field :name
+        field :functional_id
+        field :telphone
+        field :email
       end
 
       edit do
-        exclude_fields  :created_at,
-                        :updated_at,
-                        :sign_in_count,
-                        :current_sign_in_at,
-                        :last_sign_in_at,
-                        :current_sign_in_ip,
-                        :last_sign_in_ip,
-                        :remember_created_at,
-                        :reset_password_sent_at
+        field :name, :string
+        field :functional_id, :string
+        field :job_role, :string
+        field :telphone, :string
+        field :email, :string
+        field :role
+
       end
 
       show do
-        exclude_fields :id,
-                       :created_at,
-                       :updated_at,
-                       :remember_created_at,
-                       :last_sign_in_ip
+        field :name, :string
+        field :functional_id, :string
+        field :job_role, :string
+        field :telphone, :string
+        field :email, :string
+        field :role
+        field :last_sign_in_at
       end
 
-      show do
-        exclude_fields :id, :created_at, :updated_at
-      end
       # object_label_method do
       #   :custom_label_method
       # end
 
+  end
+  def role_enum
+    ['NECL', 'Admin', 'Fiscal']
   end
 end

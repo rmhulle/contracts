@@ -1,15 +1,25 @@
 class Invoice
   include Mongoid::Document
 
+  field :invoice_type, type: String #Tipo: é medição ou OS?
+  field :name, type: String # Número da Ordem de Fornecimento/Medição
 
-  field :name, type: String
-  field :value, type: Float
-  field :expiration_date, type: Date
-  field :emission_date, type: Date
+  field :competency_date, type: String # Data de Competencia
+  field :emission_date, type: Date # Data de Emissão
+  field :process_number, type: String # Número do Processo
+
+  field :execution_date, type: Date # Data de Entrega ou execução da Medição
+  field :value, type: Float # Valor Global da Medição ou Ordem de Serviço
+
   field :status, type: Boolean
   field :comments, type: String
+  field :user_id
 
-before_save :update_total_executed
+  field :rating, type: String
+  field :rating_justification, type: String
+
+  before_save :update_total_executed
+  #before_create :set_owner
 
 # só quem pode emitir uma nota é um Fornecedor, e está será sempre vinculada
 # a um contrato. Normalmente um contrato é executado por meio de várias notas
@@ -28,33 +38,47 @@ before_save :update_total_executed
       navigation_label 'Fiscal'
 
       list do
-        exclude_fields :_id, :created_at, :updated_at, :comments
-
-        field :status, :toggle
+        field :invoice_type
+        field :name
+        field :competency_date
+        field :value
+        field :contract
+        field :vendor
       end
 
       edit do
-        exclude_fields :created_at, :updated_at, :vendor
+        field :invoice_type
         field :contract do
-          # associated_collection_cache_all false
           associated_collection_scope do
-            # bindings[:object] & bindings[:controller] are available, but not in scope's block!
             user_now = bindings[:controller].current_user.id
 
             Proc.new { |scope|
-              #Rodrigo = bindings[:view].current_user
-              #Contract.includes(:accountability).where(user_id: bindings[:view].current_user.id)
-              # scope = scope.where(league_id: team.league_id) if team.present?
-              #scope = Contract.includes(:accountability).where(user_id: bindings[:view].current_user.id)
               scope = Contract.where(user_id: user_now)
-            }
+              }
 
-    end
+          end
+        end
+
+        field :name
+        field :competency_date, :string
+        field :emission_date
+        field :process_number, :string
+        field :execution_date
+        field :value
+        field :comments
+        field :rating
+        field :rating_justification
+
+        field :user_id, :hidden do
+          visible false
+          default_value do
+            bindings[:view]._current_user.id
+          end
         end
       end
 
       show do
-        exclude_fields :id, :created_at, :updated_at
+        exclude_fields :id, :created_at, :updated_at, :user_id
       end
       # object_label_method do
       #   :custom_label_method
@@ -66,6 +90,10 @@ before_save :update_total_executed
 
   end
 
+  def set_owner
+    self.user_id = bindings[:view]._current_user.id
+  end
+
   def update_total_executed
     idContrato = self.contract._id
     contrato = Contract.where(id: idContrato).first
@@ -73,5 +101,16 @@ before_save :update_total_executed
     contrato.save
   end
 
+  def invoice_type_enum
+    [ 'Medicão',
+      'Ordem de Fornecimento']
+  end
+  def rating_enum
+    [ 'Boa',
+      'Satisfatória',
+      'Neutra',
+      'Não Satisfatória',
+      'Incompleta']
+  end
 
 end

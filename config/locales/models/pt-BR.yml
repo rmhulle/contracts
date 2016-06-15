@@ -54,12 +54,17 @@ pt-BR:
         publication_date: Data de Publicação
         contract: Contrato
       invoice:
-        name: Nome
-        value: Valor
-        emission_date: Emissão
-        expiration_date: Vencimento
-        status: Liquidada?
-        comments: Comentários
+        invoice_type: Tipo de Documento
+        competency_date: Data de Competência
+        name: Identificação
+        value: Valor Global
+        emission_date: Data de Emissão
+        expiration_date: Data de Entrega
+        execution_date: Data de Execução
+        process_number: Número do Processo
+        comments: Observações
+        rating: Avaliação
+        rating_justification: Justificativa para Avaliação 
         contract: Contrato
       accountability:
         ug: Unidade Gestora

@@ -15,7 +15,11 @@ class Fine
       navigation_label 'Eventos'
 
       list do
-
+        field :name
+        field :fine_type
+        field :execution_date
+        field :process_number
+        field :contract
       end
 
       edit do

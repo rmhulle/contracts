@@ -191,6 +191,7 @@ pt-BR:
           publication_date: Data de Publicação
           contract: Contrato
       invoice:
+          invoice_type: Informe se é Medição ou Ordem de Serviço
           name: Nome
           value: Valor
           emission_date: Emissão
@@ -224,7 +225,7 @@ pt-BR:
           requesting: Setor Solicitante
           process_number: Número do Processo
           start_value: Valor Inicial
-          continuum_service: Serviço continuado
+          continuum_service: Selecione caso serviço contínuo
           start_date: Início da Vigência
           finish_date: Fim da Vigência
           observation: Observações

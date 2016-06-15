@@ -1,15 +1,15 @@
 class Ability
   include CanCan::Ability
   def initialize(user)               # allow everyone to read everything
-    if user && user.admin?
+    if user
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard                  # allow access to dashboard
-      if user.role? :superadmin
+      if user.role == "NECL"
         can :manage, :all             # allow superadmins to do anything
-      elsif user.role? :manager
-        can :manage, [User, Product]  # allow managers to do anything to products and users
-      elsif user.role? :sales
-        can :update, Product, :hidden => false  # allow sales to only update visible products
+      elsif user.role == "Fiscal"
+        can :manage, Invoice, :user_id => user.id
+        can :manage, Budget, :user_id => user.id        # =>allow managers to do anything to products and users
+        can :read,   Contract  # allow sales to only update visible products
       end
     end
   end

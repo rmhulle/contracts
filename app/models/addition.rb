@@ -11,6 +11,8 @@ class Addition
 
   belongs_to :contract
 
+  before_create :calc_total_value_addition
+
   rails_admin do
 
       navigation_label 'Eventos'
@@ -54,6 +56,15 @@ class Addition
       'Alteração de Dotação Orçamentária',
       'Substituição do Fiscal',
       'Outros']
+  end
+
+  def calc_total_value_addition
+      if (adjustment_percentage)
+        contrato = self.contract
+        self.adjustment_total_value = (self.adjustment_percentage) * contrato.total_value
+        contrato.total_value = contrato.total_value + self.adjustment_total_value
+        contrato.save!
+      end
   end
 
 

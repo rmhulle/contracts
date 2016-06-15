@@ -12,7 +12,10 @@ class Termination
       navigation_label 'Eventos'
 
       list do
-
+        field :name
+        field :process_number
+        field :publication_date
+        field :contract
       end
 
       edit do
