@@ -22,6 +22,8 @@ set :port, '22'
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 # Permitir por senha o deploy
 set :term_mode, nil
+set :stage, 'production'
+set :rails_env, "production"
 
 # Caminho do RVM instalado. Ele ja assume que estara no caminho padrao. Caso nao, modifique aqui:
 #rvm gemdir
@@ -50,6 +52,18 @@ set :keep_releases, 4
     queue! %[mkdir -p "#{deploy_to}/shared/config"]
     queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
 
+    # UNICORN
+    # /home/deploy/apps/<app>/shared/pids/unicorn.pid
+    #
+    queue! %[mkdir -p "#{deploy_to}/#{shared_path}/pids"]
+    queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/pids"]
+
+    # /home/deploy/apps/<app>/shared/sockets/unicorn.sock
+    #
+    queue! %[mkdir -p "#{deploy_to}/#{shared_path}/sockets"]
+    queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/sockets"]
+
+
     queue! %[touch "#{deploy_to}/shared/config/mongoid.yml"]
     queue  %[echo "-----> Be sure to edit 'shared/config/mongoid.yml'."]
 
@@ -66,9 +80,13 @@ desc "Deploys the current version to the server."
       invoke :'deploy:link_shared_paths'
       invoke :'bundle:install'
       invoke :'rails:assets_precompile'
+      invoke :'deploy:cleanup'
 
       to :launch do
         invoke :'unicorn:restart'
+       # queue RAILS_ENV=production bundle exec rake assets:precompile && bundle exec unicorn -E RAILS_ENV=production -D
+        queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
+        queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       end
     end
 end
