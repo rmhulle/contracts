@@ -30,7 +30,7 @@ set :rails_env, "production"
 #set :rvm_path, '/usr/local/rvm/bin/rvm'
 
 # Arquivos compartilhados
-set :shared_paths, ['config/mongoid.yml' 'config/secrets.yml', 'log']
+set :shared_paths, ['config/mongoid.yml', 'config/secrets.yml', 'log']
 set :app_path, "#{deploy_to}/#{current_path}"
 # Quantidade de releases para manter em producao
 set :keep_releases, 4
