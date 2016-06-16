@@ -13,9 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
- textarea.form-control {
-
-     height: inherit;
-     rows: 1; !important
- }
