@@ -14,7 +14,7 @@ set :deploy_to, '/home/deployer/contracts'
 # Repositorio do seu github/gitlab/bitbucket
 set :repository, 'git@github.com:rmhulle/contracts.git'
 # Branch do projeto
-set :branch, 'deploy'
+set :branch, 'master'
 set :user, 'deployer'
 # Porta do seu servidor ssh
 set :port, '22'

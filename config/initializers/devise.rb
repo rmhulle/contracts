@@ -234,7 +234,7 @@ Devise.setup do |config|
   #
   # The "*/*" below is required to match Internet Explorer requests.
   # config.navigational_formats = ['*/*', :html]
-
+config.secret_key = 'a6817e6b0f01eb77ab46f224003683ee7e317c534fb79ab45bd7454ba76714f959eebdb4200dc1b2e6b8807147eb3246e50d97068ed62d19317c2dc815074a84'
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
 
