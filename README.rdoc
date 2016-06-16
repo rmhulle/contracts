@@ -1,5 +1,31 @@
 == README
 
-==TODO
+== Tutorial para preparar ambiente de produção
+
+
+
+1) Preparando Ambiente (Banco e Aplicação conjugados)
+
+Debian 8.3
+1 Vcpu
+1GB ram
+20GB HD
+
+rbenv
+ruby 2.2.3
+mongo
+Nginx + Unicorn
+Mina
+
+
+== Levantando Serviço
+
+== Deploy e Integração Contínua
+
+== TODO
+
 * Alerta para inserir valor das notas
 * Alerta para vigência contratual
+* Acertar permissão do Atributo nome no formulágio de Registro Externo
+* Nomeclatura das Avaliações
+* Mascara para aditivo, Apostilamentos

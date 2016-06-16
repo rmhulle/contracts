@@ -1,6 +1,12 @@
 pt-BR:
   mongoid:
     attributes:
+      user:
+        name: Nome
+        functional_id: Matricula
+        job_role: Cargo
+        telphone: Telefone
+        role: Papel
       amendment:
         name: Número do Aditivo
         amendment_type: Tipo do Aditivo
@@ -64,7 +70,7 @@ pt-BR:
         process_number: Número do Processo
         comments: Observações
         rating: Avaliação
-        rating_justification: Justificativa para Avaliação 
+        rating_justification: Justificativa para Avaliação
         contract: Contrato
       accountability:
         ug: Unidade Gestora
@@ -86,7 +92,7 @@ pt-BR:
         sign_date: Data de Assinatura
         publication_date: Data de Publicação
         activity: Atividade
-        expense_item: item de Despesa
+        expense_item: Item de Despesa
         account_source: Fonte de Despesa
         object: Objeto
         requesting: Setor Solicitante
@@ -98,6 +104,7 @@ pt-BR:
         observation: Observações
         vendor: Fornecedor
         contract: Contrato
+        object_type: Tipo de Objeto
       vendor:
         name: Nome
         cnpj: CNPJ
@@ -127,8 +134,8 @@ pt-BR:
         one: Rescisão
         other: Rescisões
       invoice:
-        one: Nota
-        other: Notas
+        one: Medição/Ordem de Serviço
+        other: Medições/Ordem de Serviços
       accountability:
         one: Responsável
         other: Responsáveis
@@ -141,12 +148,6 @@ pt-BR:
       invoice:
         one: Medicão
         other: Medições
-      item:
-        one: item
-        other: Itens
-      requisition:
-        one: Solicitação de abertura
-        other: Solicitações de abertura
       user:
         one: Usuário
         other: Usuários

@@ -42,7 +42,7 @@ class Amendment
   # validates :observation, presence: true
 
 
-
+  before_create :calc_total_value_amendment
 
 
 
@@ -107,7 +107,13 @@ class Amendment
       'Alteração de Cláusula']
   end
 
-
+  def calc_total_value_amendment
+      if (amendment_value)
+        contrato = self.contract
+        contrato.total_value  = self.amendment_value + contrato.total_value
+        contrato.save!
+      end
+  end
 
 
 

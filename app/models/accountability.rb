@@ -3,7 +3,7 @@ class Accountability
 
 
   field :ug,                   type: String
-  field :sector,               type: String
+  #field :sector,               type: String
   field :document_type,        type: String
   field :lore_date,            type: Date
   field :accountability_type,  type: String
@@ -22,7 +22,10 @@ class Accountability
       navigation_label 'NECL'
 
       list do
-        exclude_fields :_id, :created_at, :updated_at
+        field :contract
+        field :lore_date
+        field :user
+        field :ug
       end
 
       edit do
@@ -46,7 +49,7 @@ class Accountability
 
   def custom_label_method
     if (self.contract)
-    "#{self.accountability_type} - #{self.contract.name}"
+    "#{self.user.name}"
     else
       "criando"
     end
@@ -55,11 +58,9 @@ class Accountability
   def update_contract
 
     contrato = Contract.where(id: self.contract_id).first
-
     contrato.user_id = self.user_id
-
     contrato.save!
-    
+
   end
 
 
@@ -71,12 +72,8 @@ class Accountability
     ['Gabinete Secretário','SSAFAS', 'SSAS' ,'SSAROAS', 'SUBGESTI']
   end
 
-  def sector_enum
-    ['GTI', 'GETA' ,'GERA' ,'GEVS']
-  end
-
-  def ug_enum
-    ['FES', 'HSMA' ,'HINSG' ,'CREFES']
+  def ug_enum # Completar a listas de ug
+    ['SESA[FES]', 'HSMA' ,'HINSG' ,'CREFES','HDS', 'HIMABA', 'HABF', 'HRAS', 'UIJM', 'CAPAAC', 'HRC', 'HSJN']
   end
 
 

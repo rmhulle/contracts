@@ -21,6 +21,7 @@ class Addition
         field :name
         field :object
         field :start_date
+        field :contract
       end
 
       edit do
@@ -34,10 +35,20 @@ class Addition
         field :description
         field :adjustment_percentage
         field :start_date
-        field :adjustment_total_value
       end
 
       show do
+        field :name
+        field :start_date
+        field :object
+        field :description
+        field :adjustment_percentage do
+           formatted_value{ "#{value}%" }
+        end
+        field :adjustment_total_value do
+           formatted_value{ "R$ #{value}" }
+        end
+
       end
 
       object_label_method do
@@ -61,7 +72,7 @@ class Addition
   def calc_total_value_addition
       if (adjustment_percentage)
         contrato = self.contract
-        self.adjustment_total_value = (self.adjustment_percentage) * contrato.total_value
+        self.adjustment_total_value = (self.adjustment_percentage/100) * contrato.total_value
         contrato.total_value = contrato.total_value + self.adjustment_total_value
         contrato.save!
       end
