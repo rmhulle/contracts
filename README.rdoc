@@ -27,5 +27,3 @@ Mina
 * Alerta para inserir valor das notas
 * Alerta para vigência contratual
 * Acertar permissão do Atributo nome no formulágio de Registro Externo
-* Nomeclatura das Avaliações
-* Mascara para aditivo, Apostilamentos

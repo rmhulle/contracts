@@ -4,18 +4,18 @@
 <br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {class:"form-signin"}) do |f| %>
   <%= devise_error_messages! %>
-    <h2 class="form-signin-heading">Registre-se</h2>
-
-    <%= f.label :name, class: "sr-only" %><br />
+    <h2 class="form-signin-heading">Registre-se</h2><br />
+    <p class="form">Seu cadatro está sujeito a aprovação do Setor de Contratos. Qualquer dúvida entre em contato com NECC </p>
+    <%= f.label :name, class: "sr-only" %>
     <%= f.text_field :name, autofocus: true, placeholder: "Nome", class: "form-control" %>
 
-    <%= f.label :functional_id, class: "sr-only" %><br />
+    <%= f.label :functional_id, class: "sr-only" %>
     <%= f.text_field :functional_id, autofocus: false, placeholder: "Matrícula", class: "form-control" %>
 
-    <%= f.label :email, class: "sr-only" %><br />
+    <%= f.label :email, class: "sr-only" %>
     <%= f.email_field :email, autofocus: false, placeholder: "Email", class: "form-control" %>
 
-    <%= f.label :password, class: "sr-only"%>
+    <%= f.label :password, class: "sr-only"%><br />
 
     <%= f.password_field :password, autocomplete: "off", placeholder: "Senha",  class: "form-control"  %>
 
