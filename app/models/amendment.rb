@@ -132,12 +132,10 @@ class Amendment
   def calc_total_value_amendment
       if (self.amendment_value)
         contrato = self.contract
-
         if (self.amendment_type == "Redução de valor")
         self.amendment_value= - self.amendment_value
         end
         contrato.total_value  = self.amendment_value + contrato.total_value
-        byebug
         contrato.save!
       end
   end
