@@ -63,10 +63,10 @@ MoneyRails.configure do |config|
   # Set default money format globally.
   # Default value is nil meaning "ignore this option".
   # Example:
-   config.default_format = {
-     :no_cents_if_whole => false,
-     :symbol => "R$",
-     :sign_before_symbol => nil
+   # config.default_format = {
+   #   :no_cents_if_whole => false,
+   #   :symbol => "R$",
+   #   :sign_before_symbol => nil
   # }
 
   # Set default raise_error_on_money_parsing option

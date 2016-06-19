@@ -15,6 +15,7 @@ $(document).ajaxComplete(function() {
  $("#amendment_activity").inputmask("99.999.9999.9999");
  $("#amendment_expense_item").inputmask("9.9.99.99-99");
  $("#amendment_account_source").inputmask("9999999999");
+ $("#amendment_amendment_value").inputmask('R$ 999.999.999,99', { numericInput: true , autoUnmask: true });
 
  $("#vendor_cnpj").inputmask("99.999.999/9999-99");
 

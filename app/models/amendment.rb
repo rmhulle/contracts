@@ -14,7 +14,7 @@ class Amendment
   field :object, type: String # Objeto do Aditivo
   field :process_number, type: String # Número do processo de aditivo
 
-  field :amendment_value, type: Float # Valor do Aditivo
+  field :amendment_value, type: Money # Valor do Aditivo
 
   field :start_date, type: Date  #vigencia inicio
   field :finish_date, type: Date #vigencia fim
@@ -76,7 +76,7 @@ class Amendment
         field :object
         field :process_number, :string
 
-        field :amendment_value
+        field :amendment_value, :string
 
         field :start_date
         field :finish_date
@@ -86,6 +86,28 @@ class Amendment
       end
 
       show do
+        field :name
+        field :amendment_type
+        field :publication_date
+
+        # Dotação Orçamentárias
+        field :activity
+        field :expense_item
+        field :account_source
+
+        field :object
+        field :process_number
+
+        field :amendment_value do
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
+        field :start_date
+        field :finish_date
+
+        field :observation
+
 
       end
 
@@ -108,9 +130,14 @@ class Amendment
   end
 
   def calc_total_value_amendment
-      if (amendment_value)
+      if (self.amendment_value)
         contrato = self.contract
+
+        if (self.amendment_type == "Redução de valor")
+        self.amendment_value= - self.amendment_value
+        end
         contrato.total_value  = self.amendment_value + contrato.total_value
+        byebug
         contrato.save!
       end
   end
