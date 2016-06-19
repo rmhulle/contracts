@@ -7,7 +7,7 @@ class Addition
   field :description, type: String
   field :adjustment_percentage, type: Float
   field :start_date, type: Date
-  field :adjustment_total_value, type: Float
+  field :adjustment_total_value, type: Money
 
   belongs_to :contract
 
@@ -46,9 +46,10 @@ class Addition
            formatted_value{ "#{value}%" }
         end
         field :adjustment_total_value do
-           formatted_value{ "R$ #{value}" }
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
         end
-
       end
 
       object_label_method do
