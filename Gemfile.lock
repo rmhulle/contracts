@@ -9,7 +9,7 @@ GIT
       tzinfo (>= 0.3.37)
 
 GIT
-  remote: https://github.com/RubyMoney/money-rails.git
+  remote: https://github.com/rmhulle/money-rails.git
   revision: ecd4ff23c9f577b714aa8e870cf9793f35af6b06
   specs:
     money-rails (1.6.1)
