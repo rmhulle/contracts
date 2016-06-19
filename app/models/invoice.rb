@@ -86,10 +86,6 @@ class Invoice
 
   end
 
-  def associate_vendor
-
-  end
-
   def set_owner
     self.user_id = bindings[:view]._current_user.id
   end
@@ -106,11 +102,8 @@ class Invoice
       'Ordem de Fornecimento']
   end
   def rating_enum
-    [ 'Boa',
-      'Satisfatória',
-      'Neutra',
-      'Não Satisfatória',
-      'Incompleta']
+    ['Satisfatória',
+      'Inatisfatória']
   end
 
 end

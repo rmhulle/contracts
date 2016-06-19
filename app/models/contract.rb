@@ -11,7 +11,10 @@ class Contract
 
   field :activity, type: String # Atividade
   field :expense_item, type: String # Item de Despesa
-  field :account_source, type: String # Fonte de Despesa
+  field :federal_account_source, type: String # Fonte de Despesa Federal
+  field :state_account_source, type: String # Fonte de Despesa Estadual
+  field :other_account_source, type: String # Fonte de Despesa
+
   field :object_type, type: String
   field :object, type: String # Objeto do contrato
 
@@ -49,13 +52,15 @@ class Contract
   has_many :terminations
   has_one :accountability, :inverse_of => :contract #Fiscal responsáel
 
-# Validações
-  def accountability_id
-    self.accountability.try :id
-  end
-  def accountability_id=(id)
-    self.draft = Accountability.find_by_id(id)
-  end
+
+# # Validações
+#   def accountability_id
+#     self.accountability.try :id
+#   end
+#   def accountability_id=(id)
+#     self.accountability = Accountability.find_by_id(id)
+#   end
+
 
   # validates :contract_model, presence: true
   # validates :name, presence: true
@@ -94,26 +99,34 @@ rails_admin do
       end
 
       edit do
+
         field :contract_model
         field :contract_type
         field :name, :string
         field :sign_date
         field :publication_date
-        field :activity, :string
-        field :expense_item, :string
-        field :account_source, :string
         field :object_type
         field :object
+        group :dotacao do
+          label "Dotação Orçamentária"
+          help "Preencha as Informações de Acordo com a Dotação Orçamentária"
+          active false
+          field :expense_item, :string
+          field :federal_account_source, :string
+          field :state_account_source, :string
+          field :other_account_source, :string
+        end
         field :vendor do
            inline_edit false
         end
-        field :requesting, :string # Trocar por um binding de uma lista
+        field :requesting
         field :process_number, :string
         field :start_value, :string
         field :continuum_service
         field :start_date
         field :finish_date
         field :observation
+
 
 
       end
@@ -134,6 +147,13 @@ rails_admin do
       # object_label_method do
       #   :custom_label_method
       # end
+      export do
+        field :sign_date, :date do
+
+        end
+      end
+
+
 
   end
 
@@ -157,6 +177,10 @@ rails_admin do
       'Locações']
   end
 
+  def requesting_enum
+     valor = Site.pluck(:name)
+  end
+
   def calc_total_executed
     self.total_executed = self.invoices.sum(:value)
   end
@@ -167,6 +191,14 @@ rails_admin do
 
   scope :Emergencial, -> { where(contract_model: 'Emergencial (art. 24, IV)') }
   scope :Prazo, -> { where( :finish_date => { :$lte => Time.now + 120.days}) }
+  # scope :by_sector, -> (sector) { where(requesting: sector) }
+
+
+
+  def self.by_sector(sector)
+      where(requesting: sector)
+  end
+
 
 
 end

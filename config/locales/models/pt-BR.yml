@@ -17,8 +17,10 @@ pt-BR:
         amendment_type: Tipo do Aditivo
         publication_date: Data de Publicação
         activity: Atividade
-        expense_item: Item de Despesa
-        account_source: Fonte de Despesa
+        expense_item: Natureza de Despesa
+        federal_account_source: Fonte de Despesa (Federal)
+        state_account_source: Fonte de Despesa (Estadual)
+        other_account_source: Fonte de Despesa (Superavit)
         object: Objeto
         process_number: Número do Processo
         amendment_value: Valor do Aditivo
@@ -101,12 +103,14 @@ pt-BR:
         publication_date: Data de Publicação
         activity: Atividade
         expense_item: Natureza de Despesa
-        account_source: Fonte de Despesa
+        federal_account_source: Fonte de Despesa (Federal)
+        state_account_source: Fonte de Despesa (Estadual)
+        other_account_source: Fonte de Despesa (Superavit)
         object: Objeto
         requesting: Setor Solicitante
         process_number: Número do Processo
         start_value: Valor Inicial
-        continuum_service: Serviço continuado
+        continuum_service: Execução Contínua
         start_date: Início da Vigência
         finish_date: Fim da Vigência
         observation: Observações
@@ -129,6 +133,9 @@ pt-BR:
         invoices: Notas Fiscais
         contracts: Contratos
         warning: Alerta
+      site:
+        name: Nome
+        subsecretary: Subsecretaria
     models:
       addition:
         one: Apostilamento
@@ -172,3 +179,6 @@ pt-BR:
       vendor:
         one: Fornecedor
         other: Fornecedores
+      site:
+        one: Unidade
+        other: Unidades

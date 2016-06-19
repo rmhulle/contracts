@@ -9,7 +9,9 @@ class Amendment
 
   field :activity, type: String # Atividade
   field :expense_item, type: String # Item de Despesa
-  field :account_source, type: String # Fonte de Despesa
+  field :federal_account_source, type: String # Fonte de Despesa Federal
+  field :state_account_source, type: String # Fonte de Despesa Estadual
+  field :other_account_source, type: String # Fonte de Despesa
 
   field :object, type: String # Objeto do Aditivo
   field :process_number, type: String # Número do processo de aditivo
@@ -69,10 +71,16 @@ class Amendment
 
         # Dotação Orçamentárias
 
-        field :activity, :string
-        field :expense_item, :string
-        field :account_source, :string
-
+        group :dotacao do
+          label "Dotação Orçamentária"
+          help "Preencha as Informações de Acordo com a Dotação Orçamentária"
+          active false
+          field :expense_item, :string
+          field :federal_account_source, :string
+          field :state_account_source, :string
+          field :other_account_source, :string
+        end
+        
         field :object
         field :process_number, :string
 
