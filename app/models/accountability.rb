@@ -19,7 +19,7 @@ class Accountability
 
   rails_admin do
 
-      navigation_label 'NECL'
+      navigation_label 'NECC'
 
       list do
         field :contract
@@ -49,7 +49,7 @@ class Accountability
 
   def custom_label_method
     if (self.contract)
-    "#{self.user.name}"
+    "#{self.user.name} - #{self.contract.name}"
     else
       "criando"
     end

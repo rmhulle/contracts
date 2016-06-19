@@ -7,6 +7,11 @@ pt-BR:
         job_role: Cargo
         telphone: Telefone
         role: Papel
+        sign_in_count: Quantidades de Acesso
+        current_sign_in_at: Acesso atual
+        last_sign_in_at: Ultimo Acesso em
+        current_sign_in_ip: IP da Sessão Atual
+        last_sign_in_ip: IP da Sessão anterior
       amendment:
         name: Número do Aditivo
         amendment_type: Tipo do Aditivo
@@ -72,6 +77,7 @@ pt-BR:
         rating: Avaliação
         rating_justification: Justificativa para Avaliação
         contract: Contrato
+        vendor: Fornecedor
       accountability:
         ug: Unidade Gestora
         sector: Gerência
@@ -86,13 +92,15 @@ pt-BR:
         name: Número do Empenho
         date: Data
         value: Valor (R$)
+        contract: Contrato
       contract:
         contract_model: Modalidade de Licitação
-        name: Número do Contrato
+        contract_type: Instrumento Administrativo
+        name: Número do Instrumento Administrativo
         sign_date: Data de Assinatura
         publication_date: Data de Publicação
         activity: Atividade
-        expense_item: Item de Despesa
+        expense_item: Natureza de Despesa
         account_source: Fonte de Despesa
         object: Objeto
         requesting: Setor Solicitante
@@ -105,6 +113,16 @@ pt-BR:
         vendor: Fornecedor
         contract: Contrato
         object_type: Tipo de Objeto
+        amendment: Aditivos
+        additions: Apostilamentos
+        accountability: Responsáveis
+        fines: Multas
+        invoices: Medições
+        notifications: Notificações
+        total_value: Valor Global Atual
+        reratifications: Rerratificações
+        terminations: Rescisões
+        closures: Encerramento
       vendor:
         name: Nome
         cnpj: CNPJ

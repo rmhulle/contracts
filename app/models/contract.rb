@@ -20,7 +20,7 @@ class Contract
   field :process_number, type: String # Número do processo
 
   # Valores do Contrato
-  field :start_value, type: Float # Valor Incial do contrato
+  field :start_value, type: Money #default: 0, fixed_currency: 'BRL' # Valor Incial do contrato
 
   field :continuum_service, type: Boolean # é Serviço continuado?
 
@@ -32,7 +32,7 @@ class Contract
 
 # Variáveis para uso do sistema
 
-  field :total_value, type: Float # Valor global do contrato Será a Soma de Todos Aditivos, Apostilamentos e Valor inicial do Contrato
+  field :total_value, type: Money #default: 0, fixed_currency: 'BRL'  # Valor global do contrato Será a Soma de Todos Aditivos, Apostilamentos e Valor inicial do Contrato
   field :total_budget, type: Float # Valor total do empenho
   field :total_executed, type: Float # Total executado (soma das notas já executadas)
 
@@ -77,7 +77,7 @@ class Contract
 
 rails_admin do
 
-      navigation_label 'NECL'
+      navigation_label 'NECC'
 
       list do
         scopes [nil, :Emergencial, :Prazo]
@@ -86,7 +86,9 @@ rails_admin do
         field :object_type
         field :finish_date
         field :total_value do
-           formatted_value{ "R$ #{value}" }
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
         end
         field :accountability
       end
@@ -107,7 +109,7 @@ rails_admin do
         end
         field :requesting, :string # Trocar por um binding de uma lista
         field :process_number, :string
-        field :start_value
+        field :start_value, :string
         field :continuum_service
         field :start_date
         field :finish_date
@@ -118,6 +120,16 @@ rails_admin do
 
       show do
         exclude_fields :id, :created_at, :updated_at, :user_id
+        field :total_value do
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
+        field :start_value do
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
       end
       # object_label_method do
       #   :custom_label_method
@@ -127,6 +139,7 @@ rails_admin do
 
   def contract_model_enum
     [ 'Concorrência',
+      'Convite',
       'Tomada de Preços',
       'Pregão',
       'Emergencial (art. 24, IV)',

@@ -12,7 +12,7 @@ class Vendor
 
   rails_admin do
 
-      navigation_label 'NECL'
+      navigation_label 'NECC'
 
       list do
         exclude_fields :_id, :created_at, :updated_at

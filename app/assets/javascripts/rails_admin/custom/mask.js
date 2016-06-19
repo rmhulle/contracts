@@ -5,14 +5,14 @@ $(document).ajaxComplete(function() {
 
  $("#contract_name").inputmask("9999/9999");
  $("#contract_process_number").inputmask("99999999");
- $("#contract_activity").inputmask("99.999.9999.9999.9999");
+ $("#contract_activity").inputmask("99.999.9999.9999");
  $("#contract_expense_item").inputmask("9.9.99.99-99");
  $("#contract_account_source").inputmask("9999999999");
  $("#contract_start_value").inputmask('R$ 999.999.999,99', { numericInput: true , autoUnmask: true });
 
  $("#amendment_name").inputmask("9 º");
  $("#amendment_process_number").inputmask("99999999");
- $("#amendment_activity").inputmask("99.999.9999.9999.9999");
+ $("#amendment_activity").inputmask("99.999.9999.9999");
  $("#amendment_expense_item").inputmask("9.9.99.99-99");
  $("#amendment_account_source").inputmask("9999999999");
 
