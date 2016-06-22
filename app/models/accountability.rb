@@ -69,11 +69,15 @@ class Accountability
   end
 
   def subsec_enum
-    ['Gabinete Secretário','SSAFAS', 'SSAS' ,'SSAROAS', 'SUBGESTI']
+    ['Gabinete Secretario',
+     'Subsecretaria de Regulação e de Organização da Atenção a Saúde',
+     'Subsecretaria de Gestão Hospitalar',
+     'Subsecretaria de Adminstração e de Financiamento da Atenção a Saúde',
+     'Subsecretaria de Gestão Estratégica e Inovação']
   end
 
   def ug_enum # Completar a listas de ug
-    ['SESA[FES]', 'HSMA' ,'HINSG' ,'CREFES','HDS', 'HIMABA', 'HABF', 'HRAS', 'UIJM', 'CAPAAC', 'HRC', 'HSJN']
+       valor = Site.pluck(:name)
   end
 
 

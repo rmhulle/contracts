@@ -39,7 +39,8 @@ class Site
     ['Gabinete Secretario',
      'Subsecretaria de Regulação e de Organização da Atenção a Saúde',
      'Subsecretaria de Gestão Hospitalar',
-     'Subsecretaria de Adminstração e de Financiamento da Atenção a Saúde']
+     'Subsecretaria de Adminstração e de Financiamento da Atenção a Saúde',
+     'Subsecretaria de Gestão Estratégica e Inovação']
   end
 
 end
