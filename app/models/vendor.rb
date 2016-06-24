@@ -3,7 +3,8 @@ class Vendor
 
 
   field :name, type: String
-  field :cnpj, type: String
+  field :register, type: String
+  field :register_type, type: String
   field :warning, type: Boolean
 
 # Pode ter vários contratos
@@ -16,12 +17,15 @@ class Vendor
 
       list do
         exclude_fields :_id, :created_at, :updated_at
+
         field :warning, :toggle
+
       end
 
       edit do
         field :name
-        field :cnpj, :string
+        field :register_type
+        field :register, :string
         field :warning
         exclude_fields :created_at, :updated_at, :contracts, :invoices
       end
@@ -41,4 +45,7 @@ class Vendor
     "#{self.name}"
   end
 
+    def register_type_enum
+      ['Pessoa Física', 'Pessoa Jurídica']
+    end
 end

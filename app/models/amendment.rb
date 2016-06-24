@@ -44,7 +44,7 @@ class Amendment
   # validates :observation, presence: true
 
 
-  before_create :calc_total_value_amendment
+  before_create :calc_total_value_amendment, :update_finish_date
 
 
 
@@ -53,10 +53,11 @@ class Amendment
       navigation_label 'Eventos'
 
       list do
-        field :name, :string
+        field :name
+        field :contract
         field :amendment_type
         field :publication_date
-        field :process_number, :string
+        field :process_number
       end
 
       edit do
@@ -80,7 +81,7 @@ class Amendment
           field :state_account_source, :string
           field :other_account_source, :string
         end
-        
+
         field :object
         field :process_number, :string
 
@@ -101,7 +102,10 @@ class Amendment
         # Dotação Orçamentárias
         field :activity
         field :expense_item
-        field :account_source
+        field :expense_item, :string
+        field :federal_account_source, :string
+        field :state_account_source, :string
+        field :other_account_source, :string
 
         field :object
         field :process_number
@@ -134,13 +138,15 @@ class Amendment
     [ 'Redução de valor',
       'Acréscimo de valor',
       'Prorrogação de Prazo',
+      'Prorrogação de Prazo e Acréscimo',
+      'Prorrogação de Prazo e Redução',
       'Alteração de Cláusula']
   end
 
   def calc_total_value_amendment
       if (self.amendment_value)
         contrato = self.contract
-        if (self.amendment_type == "Redução de valor")
+        if (self.amendment_type == "Redução de valor" || self.amendment_type == "Prorrogação de Prazo e Redução")
         self.amendment_value= - self.amendment_value
         end
         contrato.total_value  = self.amendment_value + contrato.total_value
@@ -148,7 +154,13 @@ class Amendment
       end
   end
 
-
+  def update_finish_date
+      if (self.finish_date && (self.amendment_type == "Prorrogação de Prazo" || self.amendment_type == "Prorrogação de Prazo e Acréscimo" || self.amendment_type == "Prorrogação de Prazo e Redução"))
+        contrato = self.contract
+        contrato.last_finish_date  = self.finish_date
+        contrato.save!
+      end
+  end
 
 
 

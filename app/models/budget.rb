@@ -40,7 +40,7 @@ class Budget
           associated_collection_scope do
             user_now = bindings[:controller].current_user.id
             Proc.new { |scope|
-              scope = Contract.where(user_id: user_now)
+              scope = Contract.where(user_id: user_now, )
               }
 
           end

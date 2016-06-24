@@ -35,6 +35,7 @@ class Accountability
         end
         field :user do
           inline_edit false
+          inline_add false
         end
       end
 
@@ -66,6 +67,10 @@ class Accountability
 
   def accountability_type_enum
     ['Fiscal' ,'Gestor' ,'Vizualizar']
+  end
+
+  def document_type_enum
+    ['Contrato' ,'Apostilamento' ,'Designação']
   end
 
   def subsec_enum

@@ -24,6 +24,9 @@ Mina
 
 == TODO
 
+* Separar (ATA de Contrato) Medicão de Ordem de Fornecimento
 * Alerta para inserir valor das notas
 * Alerta para vigência contratual
 * Acertar permissão do Atributo nome no formulágio de Registro Externo
+* Trocar Senha e Esquecer Senha
+* Separar Atas e Contratos no Email

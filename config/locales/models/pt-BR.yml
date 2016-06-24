@@ -94,7 +94,7 @@ pt-BR:
         name: Número do Empenho
         date: Data
         value: Valor (R$)
-        contract: Contrato
+        contract: Número do Instrumento
       contract:
         contract_model: Modalidade de Licitação
         contract_type: Instrumento Administrativo
@@ -112,7 +112,8 @@ pt-BR:
         start_value: Valor Inicial
         continuum_service: Execução Contínua
         start_date: Início da Vigência
-        finish_date: Fim da Vigência
+        finish_date: Fim da Vigência Inicial
+        last_finish_date: Fim da Vigência Prorrogada
         observation: Observações
         vendor: Fornecedor
         contract: Contrato
@@ -132,7 +133,8 @@ pt-BR:
         total_executed: Total Executado
       vendor:
         name: Nome
-        cnpj: CNPJ
+        register_type: Tipo de Documento
+        register: Documento de Registro
         invoices: Notas Fiscais
         contracts: Contratos
         warning: Alerta

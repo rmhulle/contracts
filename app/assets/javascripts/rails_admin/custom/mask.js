@@ -24,7 +24,6 @@ $(document).ajaxComplete(function() {
  $("#amendment_other_account_source").inputmask("9999999999");
  $("#amendment_amendment_value").inputmask('R$ 999.999.999,99', { numericInput: true , autoUnmask: true });
 
- $("#vendor_cnpj").inputmask("99.999.999/9999-99");
 
  $("#budget_name").inputmask("9999NE99999");
  $("#budget_value").inputmask('R$ 999.999.999,99', { numericInput: true , autoUnmask: true });
@@ -44,7 +43,14 @@ $(document).ajaxComplete(function() {
      $("#invoice_name").inputmask("999/9999");
     }
   });
-
+  $("#vendor_register_type").change(function() {
+    if ($(this).val() == "Pessoa Física") {
+      $("#vendor_register").inputmask("999.999.999-99");
+     }
+     else {
+       $("#vendor_register").inputmask("99.999.999/9999-99");
+     }
+   });
  });
 
 

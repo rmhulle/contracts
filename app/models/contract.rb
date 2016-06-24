@@ -39,6 +39,7 @@ class Contract
   field :total_value, type: Money #default: 0, fixed_currency: 'BRL'  # Valor global do contrato Será a Soma de Todos Aditivos, Apostilamentos e Valor inicial do Contrato
   field :total_budget, type: Money  # Valor total do empenho
   field :total_executed, type: Money # Total executado (soma das notas já executadas)
+  field :last_finish_date, type: Date
 
 
   belongs_to :vendor, inverse_of: :contract
@@ -90,7 +91,7 @@ rails_admin do
         field :name
         field :contract_model
         field :object_type
-        field :finish_date
+        field :last_finish_date
         field :total_value do
           pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
             humanized_money_with_symbol(value)
@@ -196,6 +197,7 @@ rails_admin do
 
   def calc_total_value
     self.total_value = self.start_value
+    self.last_finish_date = self.finish_date
   end
 
   scope :Emergencial, -> { where(contract_model: 'Emergencial (art. 24, IV)') }

@@ -40,7 +40,7 @@ class Notification
   end
 
   def custom_label_method
-    "#{self.name} - #{self.contract.name}"
+    "#{self.name}"
   end
 
 
