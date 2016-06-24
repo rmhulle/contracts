@@ -40,7 +40,7 @@ class Termination
   end
 
   def custom_label_method
-    "#{self.name}"
+    "#{self.name} - #{self.contract.name}"
   end
 
 

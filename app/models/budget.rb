@@ -4,7 +4,7 @@ class Budget
 
   field :name, type: String
   field :date, type: Date
-  field :value, type: Float
+  field :value, type: Money
   field :user_id
 
   belongs_to :contract
@@ -17,7 +17,11 @@ class Budget
       list do
         field :name
         field :date
-        field :value
+        field :value do
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
         field :contract
       end
 
@@ -29,10 +33,12 @@ class Budget
             bindings[:view]._current_user.id
           end
         end
+        field :name, :string
+        field :date
+        field :value, :string
         field :contract do
           associated_collection_scope do
             user_now = bindings[:controller].current_user.id
-
             Proc.new { |scope|
               scope = Contract.where(user_id: user_now)
               }
@@ -43,6 +49,11 @@ class Budget
 
       show do
         exclude_fields :id, :created_at, :updated_at
+        field :value do
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
       end
       # object_label_method do
       #   :custom_label_method
@@ -53,7 +64,7 @@ class Budget
   def calc_total_budget
     idContrato = self.contract._id
     contrato = Contract.where(id: idContrato).first
-    contrato.total_budget = contrato.budgets.sum(:value) + self.value
+    contrato.total_budget = contrato.budgets.sum(&:value) + self.value
     contrato.save
   end
 

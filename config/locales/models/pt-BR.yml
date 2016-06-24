@@ -77,7 +77,7 @@ pt-BR:
         process_number: Número do Processo
         comments: Observações
         rating: Avaliação
-        rating_justification: Justificativa para Avaliação
+        rating_justification: Justificativa
         contract: Contrato
         vendor: Fornecedor
       accountability:
@@ -98,7 +98,7 @@ pt-BR:
       contract:
         contract_model: Modalidade de Licitação
         contract_type: Instrumento Administrativo
-        name: Número do Instrumento Administrativo
+        name: Número do Instrumento
         sign_date: Data de Assinatura
         publication_date: Data de Publicação
         activity: Atividade
@@ -127,6 +127,9 @@ pt-BR:
         reratifications: Rerratificações
         terminations: Rescisões
         closures: Encerramento
+        budgets: Empenhos
+        total_budget: Total Empenhado
+        total_executed: Total Executado
       vendor:
         name: Nome
         cnpj: CNPJ

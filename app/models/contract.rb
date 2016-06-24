@@ -32,24 +32,25 @@ class Contract
 
   field :observation, type: String # Observações
   field :user_id
+  field :active, type: Boolean
 
 # Variáveis para uso do sistema
 
   field :total_value, type: Money #default: 0, fixed_currency: 'BRL'  # Valor global do contrato Será a Soma de Todos Aditivos, Apostilamentos e Valor inicial do Contrato
-  field :total_budget, type: Float # Valor total do empenho
-  field :total_executed, type: Float # Total executado (soma das notas já executadas)
+  field :total_budget, type: Money  # Valor total do empenho
+  field :total_executed, type: Money # Total executado (soma das notas já executadas)
 
 
   belongs_to :vendor, inverse_of: :contract
-  has_many :budgets
-  has_many :invoices
-  has_many :additions
-  has_many :amendment
-  has_many :closures
-  has_many :fines
-  has_many :notifications
-  has_many :reratifications
-  has_many :terminations
+  has_many :budgets, inverse_of: :contract
+  has_many :invoices, inverse_of: :contract
+  has_many :additions, inverse_of: :contract
+  has_many :amendment, inverse_of: :contract
+  has_many :closures, inverse_of: :contract
+  has_many :fines, inverse_of: :contract
+  has_many :notifications, inverse_of: :contract
+  has_many :reratifications, inverse_of: :contract
+  has_many :terminations, inverse_of: :contract
   has_one :accountability, :inverse_of => :contract #Fiscal responsáel
 
 
@@ -143,14 +144,22 @@ rails_admin do
             humanized_money_with_symbol(value)
           end
         end
+        field :total_budget do
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
+        field :total_executed do
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
       end
       # object_label_method do
       #   :custom_label_method
       # end
       export do
-        field :sign_date, :date do
 
-        end
       end
 
 

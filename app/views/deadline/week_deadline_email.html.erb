@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <style type="text/css" media="screen">
+        table {
+          border-collapse: collapse;
+          margin-left: 15px;
+          margin-bottom: 10px;
+          margin-top: 10px;
+          width: 80%;
+        }
+        h2{
+          padding: 10px;
+        }
+        p{
+          text-align: left;
+          padding: 15px;
+          word-wrap: break-word;
+          width: 80%;
+        }
+
+        th, td {
+            text-align: justify;
+            padding: 8px;
+            word-wrap: break-word;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        th {
+            background-color: blue;
+            color: white;
+        }
+      </style>
+  </head>
+  <body>
+    <h2>Olá <%= @user.name %>,</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu diam nec sapien lobortis rutrum
+      fermentum eget magna. Proin eu sem odio. Duis convallis risus turpis, et aliquam diam ornare
+      scelerisque. Donec id sapien nec erat posuere consectetur ac eu lacus. Fusce non quam a purus
+      scelerisque lacinia. Ut id tellus et sem vestibulum consequat ut eu metus.</p>
+    <table>
+      <tr>
+        <th width="10%" >Número</th>
+        <th width="45%" >Objeto</th>
+        <th width="15%" >Data de Vigência</th>
+        <th width="10%" >Ação</th>
+      </tr>
+    <% @accountabilities.each do |accountability| %>
+    <% tempo = (accountability.contract.finish_date - Time.now.to_date).to_i %>
+        <tr>
+          <td><%= accountability.contract.name %></td>
+          <td><%= accountability.contract.object %></td>
+          <td><%= accountability.contract.finish_date %></td>
+          <% if tempo > 120 %>
+            <td><span class="label label-success">Monitorar</span></td>
+          <% elsif (tempo < 60) %>
+            <td><span class="label label-warning">Renovar</span></td>
+          <% else %>
+            <td><span class="label label-danger">Renovação Urgente</span></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </br>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu diam nec sapien lobortis rutrum
+      fermentum eget magna. Proin eu sem odio.</p>
+  </body>
+</html>

@@ -9,7 +9,7 @@ class Invoice
   field :process_number, type: String # Número do Processo
 
   field :execution_date, type: Date # Data de Entrega ou execução da Medição
-  field :value, type: Float # Valor Global da Medição ou Ordem de Serviço
+  field :value, type: Money # Valor Global da Medição ou Ordem de Serviço
 
   field :status, type: Boolean
   field :comments, type: String
@@ -18,7 +18,7 @@ class Invoice
   field :rating, type: String
   field :rating_justification, type: String
 
-  before_save :update_total_executed
+  before_create :update_total_executed
   #before_create :set_owner
 
 # só quem pode emitir uma nota é um Fornecedor, e está será sempre vinculada
@@ -41,7 +41,11 @@ class Invoice
         field :invoice_type
         field :name
         field :competency_date
-        field :value
+        field :value do
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
         field :contract
         field :vendor
       end
@@ -64,7 +68,7 @@ class Invoice
         field :emission_date
         field :process_number, :string
         field :execution_date
-        field :value
+        field :value, :string
         field :comments
         field :rating
         field :rating_justification
@@ -79,6 +83,11 @@ class Invoice
 
       show do
         exclude_fields :id, :created_at, :updated_at, :user_id
+        field :value do
+          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
       end
       # object_label_method do
       #   :custom_label_method
@@ -90,10 +99,13 @@ class Invoice
     self.user_id = bindings[:view]._current_user.id
   end
 
+#Issue: Can't sum classes, .sum(:value) -> .sum(&:value). issue solved by Karlinha S2!
+
   def update_total_executed
+
     idContrato = self.contract._id
     contrato = Contract.where(id: idContrato).first
-    contrato.total_executed = contrato.invoices.sum(:value) + self.value
+    contrato.total_executed = contrato.invoices.sum(&:value) + self.value
     contrato.save
   end
 

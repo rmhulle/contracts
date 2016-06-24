@@ -27,11 +27,13 @@ $(document).ajaxComplete(function() {
  $("#vendor_cnpj").inputmask("99.999.999/9999-99");
 
  $("#budget_name").inputmask("9999NE99999");
- $("#budget_name").inputmask("9999NE99999");
+ $("#budget_value").inputmask('R$ 999.999.999,99', { numericInput: true , autoUnmask: true });
 
  //$("#invoice_name").inputmask("9999/99999");
  $("#invoice_competency_date").inputmask("99/9999");
  $("#invoice_process_number").inputmask("99999999");
+ $("#invoice_value").inputmask('R$ 999.999.999,99', { numericInput: true , autoUnmask: true });
+
 
  $("#fine_name").inputmask("999/9999");
  $("#notification_name").inputmask("999/9999");
