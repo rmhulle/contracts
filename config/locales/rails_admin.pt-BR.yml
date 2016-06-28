@@ -199,6 +199,7 @@ pt-BR:
           status: Liquidada?
           comments: Comentários
           contract: Contrato
+          rating: Avaliação da Execução do Contrato
       accountability:
           ug: Unidade Gestora
           sector: Gerência

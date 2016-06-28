@@ -29,4 +29,7 @@ Mina
 * Alerta para vigência contratual
 * Acertar permissão do Atributo nome no formulágio de Registro Externo
 * Trocar Senha e Esquecer Senha
-* Separar Atas e Contratos no Email
+* Separar Atas e Contratos no Email (Tirar Data de COmpetência da Ordem de Serviços)
+* Logica justificativa de avaliação obrigatrio caso insatisfatório
+* Criar Saldo Residual
+* Sistema de informações contratuais
