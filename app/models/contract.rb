@@ -23,7 +23,7 @@ class Contract
   field :process_number, type: String # Número do processo
 
   # Valores do Contrato
-  field :start_value, type: Money #default: 0, fixed_currency: 'BRL' # Valor Incial do contrato
+  field :start_value, type: Money , default: 0 # fixed_currency: 'BRL' # Valor Incial do contrato
 
   field :continuum_service, type: Boolean # é Serviço continuado?
 

@@ -16,7 +16,7 @@ class Amendment
   field :object, type: String # Objeto do Aditivo
   field :process_number, type: String # Número do processo de aditivo
 
-  field :amendment_value, type: Money # Valor do Aditivo
+  field :amendment_value, type: Money, default: 0
 
   field :start_date, type: Date  #vigencia inicio
   field :finish_date, type: Date #vigencia fim
@@ -149,7 +149,7 @@ class Amendment
         if (self.amendment_type == "Redução de valor" || self.amendment_type == "Prorrogação de Prazo e Redução")
         self.amendment_value= - self.amendment_value
         end
-        contrato.total_value  = self.amendment_value + contrato.total_value
+        contrato.total_value  = self.amendment_value + contrato.try(:total_value)
         contrato.save!
       end
   end
@@ -164,4 +164,12 @@ class Amendment
 
 
 
+end
+
+module Enumerable
+  def sum(identity = 0, &block)
+    if block_given? map(&block).sum(identity)
+    else inject(:+) || identity
+    end
+  end
 end

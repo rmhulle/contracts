@@ -7,7 +7,7 @@ class Addition
   field :description, type: String
   field :adjustment_percentage, type: Float
   field :start_date, type: Date
-  field :adjustment_total_value, type: Money
+  field :adjustment_total_value, type: Money, default: 0
 
   belongs_to :contract
 
