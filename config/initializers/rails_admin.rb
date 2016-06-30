@@ -20,8 +20,10 @@ config.main_app_name = ["Sistema de Contratos", ""]
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
   config.actions do
-    dashboard               # mandatory
-    index                         # mandatory
+    dashboard
+    report            # mandatory
+    index
+                       # mandatory
     new
     export
     import
