@@ -89,6 +89,7 @@ rails_admin do
       list do
         scopes [nil, :Emergencial, :Prazo]
         field :name
+        field :contract_type
         field :contract_model
         field :object_type
         field :last_finish_date
