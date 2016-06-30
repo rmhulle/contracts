@@ -39,7 +39,7 @@ gem 'rails_admin_rollincode', :git => 'https://github.com/rmhulle/rails_admin_th
 gem 'rails_admin'
 gem "rails_admin_import", "~> 1.4"
 gem 'rails_admin_toggleable'
-gem 'rails_admin_report', :path => '/Users/rmhulle/Documents/Projetos/Rails/rails_admin_report'
+gem 'rails_admin_report', :git => 'https://github.com/rmhulle/rails_admin_report.git' #:path => '/Users/rmhulle/Documents/Projetos/Rails/rails_admin_report'
 gem "mask_validator"
 gem 'money-rails', :git =>'https://github.com/rmhulle/money-rails.git'
 # Use ActiveModel has_secure_password

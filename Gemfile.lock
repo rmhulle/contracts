@@ -19,17 +19,18 @@ GIT
       railties (>= 3.0)
 
 GIT
+  remote: https://github.com/rmhulle/rails_admin_report.git
+  revision: a2d9ee10a3bb14c060569a858a1f1646e7c3c561
+  specs:
+    rails_admin_report (0.0.2)
+      rails (~> 4.2.6)
+
+GIT
   remote: https://github.com/rmhulle/rails_admin_theme.git
   revision: c56a92dbdc460e29fe17b0253599fdd35ddf9cc8
   specs:
     rails_admin_rollincode (1.0)
       rails (>= 4.0, < 6)
-
-PATH
-  remote: /Users/rmhulle/Documents/Projetos/Rails/rails_admin_report
-  specs:
-    rails_admin_report (0.0.2)
-      rails (~> 4.2.6)
 
 GEM
   remote: https://rubygems.org/
