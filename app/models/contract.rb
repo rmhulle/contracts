@@ -92,13 +92,15 @@ rails_admin do
         field :contract_type
         field :contract_model
         field :object_type
-        field :last_finish_date
+        field :last_finish_date do
+          strftime_format "%d-%m-%Y"
+        end
         field :total_value do
           pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
             humanized_money_with_symbol(value)
           end
         end
-        field :accountability
+        # field :accountability
       end
 
       edit do

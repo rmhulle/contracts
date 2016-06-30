@@ -33,3 +33,4 @@ Mina
 * Logica justificativa de avaliação obrigatrio caso insatisfatório
 * Criar Saldo Residual
 * Sistema de informações contratuais
+* Acertar datas para xx/xx/xxxx

@@ -16,10 +16,11 @@ class Vendor
       navigation_label 'NECC'
 
       list do
-        exclude_fields :_id, :created_at, :updated_at
-
-        field :warning, :toggle
-
+        field :name do
+          column_width 500
+        end
+        field :register
+        field :register_type
       end
 
       edit do
