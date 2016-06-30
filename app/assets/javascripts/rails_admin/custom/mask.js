@@ -1,7 +1,7 @@
 //= require jquery.inputmask
 //= require jquery.inputmask.numeric.extensions
 
-$(document).ajaxComplete(function() {
+$(document).on('rails_admin.dom_ready', function(){
 
  $("#contract_name").inputmask("9999/9999");
  $("#contract_process_number").inputmask("99999999");
@@ -52,9 +52,3 @@ $(document).ajaxComplete(function() {
      }
    });
  });
-
-
-//52.990.745/0001-49
-//var formattedDate = Inputmask.format("2331973", { alias: "dd/mm/yyyy"});
-//$( window ).load( readyFn );
-//$("#contract_start_value").inputmask({mask : "9999999999", numericInput: true });

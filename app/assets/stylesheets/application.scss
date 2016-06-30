@@ -1,6 +1,38 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+#jumbotron div  {
+    margin-top: 75px;
+    .container {
+        margin-top: 10px;
+    }
+}
+
+.navbar-blue {
+    background-color: #208BAA;
+    border-color: #000000;
+
+}
+
+.btn-green{
+    color: #fff;
+    background-color: #67ca67;
+    border-color: #ffffff;
+}
+
+.btn-pink {
+    color: #fff;
+    background-color: #c86673;
+    border-color: #ffffff;
+}
+
+
+.navbar-form.navbar-right {
+    margin-top: 17px;
+
+}
+
 .form-signin {
     max-width: 330px;
     padding: 15px;
@@ -8,7 +40,6 @@
 }
 
 .form-signin input {
-
 margin-top: 5px;
 margin-bottom: 5px;
 }

@@ -47,8 +47,8 @@ pt-BR:
         menu: "Dashboard"
         breadcrumb: "Dashboard"
       index:
-        title: "Lista de %{model_label_plural}"
-        menu: "Lista"
+        title: "Relação de %{model_label_plural}"
+        menu: "Relação"
         breadcrumb: "%{model_label_plural}"
       show:
         title: "Detalhes para %{model_label} '%{object_label}'"

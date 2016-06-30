@@ -1,7 +1,7 @@
 RailsAdmin.config do |config|
 
   ### Popular gems integration
-
+config.main_app_name = ["Sistema de Contratos", ""]
   ## == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :user
@@ -20,7 +20,7 @@ RailsAdmin.config do |config|
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
   config.actions do
-    dashboard                     # mandatory
+    dashboard               # mandatory
     index                         # mandatory
     new
     export

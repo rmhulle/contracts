@@ -17,4 +17,6 @@
 //= require jquery.inputmask.extensions
 //= require jquery.inputmask.numeric.extensions
 //= require jquery.inputmask.date.extensions
+//= require highcharts
+//= require chartkick
 //= require_tree .

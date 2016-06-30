@@ -43,6 +43,12 @@ gem "mask_validator"
 gem 'money-rails', :git =>'https://github.com/rmhulle/money-rails.git'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+gem "chartkick"
+
+
+
+
 gem 'mina'
 gem 'unicorn'
 gem 'mina-unicorn', require: false
