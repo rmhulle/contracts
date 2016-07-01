@@ -82,17 +82,16 @@ pt-BR:
         vendor: Fornecedor
       service_order:
         invoice_type: Tipo de Documento
-        competency_date: Data de Competência
+        deadline_date: Prazo de Entrega
         name: Identificação
         value: Valor Global
-        emission_date: Data de Emissão
-        expiration_date: Data de Entrega
-        execution_date: Data de Execução
+        emission_date: Emissão da OS
+        execution_date: Data de Entrega
         process_number: Número do Processo
         comments: Observações
         rating: Avaliação
         rating_justification: Justificativa
-        contract: Contrato
+        contract: Instrumento
         vendor: Fornecedor
       accountability:
         ug: Unidade Gestora
@@ -152,6 +151,7 @@ pt-BR:
         invoices: Notas Fiscais
         contracts: Contratos
         warning: Alerta
+        service_orders: Ordens de Serviço
       site:
         name: Nome
         subsecretary: Subsecretaria

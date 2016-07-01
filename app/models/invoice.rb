@@ -2,14 +2,14 @@ class Invoice
   include Mongoid::Document
 
   field :invoice_type, type: String, default: 'Medicão'#Tipo: é medição ou OS?
-  field :name, type: String # Número da Ordem de Fornecimento/Medição
+  # field :name, type: String # Número da Ordem de Fornecimento/Medição
 
   field :competency_date, type: String # Data de Competencia
   field :emission_date, type: Date # Data de Emissão
   field :process_number, type: String # Número do Processo
 
-  field :execution_date, type: Date # Data de Entrega ou execução da Medição
-  field :value, type: Money # Valor Global da Medição ou Ordem de Serviço
+  field :execution_date, type: Date # Data de  execução da Medição
+  field :value, type: Money # Valor Global da Medição
 
   field :status, type: Boolean
   field :comments, type: String
@@ -38,7 +38,6 @@ class Invoice
       navigation_label 'Fiscal'
 
       list do
-        field :name
         field :competency_date
         field :value do
           pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
@@ -50,7 +49,6 @@ class Invoice
       end
 
       edit do
-        field :invoice_type
         field :contract do
           associated_collection_scope do
             user_now = bindings[:controller].current_user.id
@@ -62,7 +60,6 @@ class Invoice
           end
         end
 
-        field :name
         field :competency_date, :string
         field :emission_date
         field :process_number, :string
@@ -103,6 +100,7 @@ class Invoice
   def update_total_executed
     idContrato = self.contract._id
     contrato = Contract.where(id: idContrato).first
+    self.vendor_id = contrato.vendor._id
     contrato.total_executed = contrato.invoices.sum(&:value) + self.value
     contrato.save
   end

@@ -9,7 +9,8 @@ class Vendor
 
 # Pode ter vários contratos
   has_many :contracts, inverse_of: :vendor
-  has_many :invoices
+  has_many :invoices, inverse_of: :vendor
+  has_many :service_orders, inverse_of: :vendor
 
   rails_admin do
 

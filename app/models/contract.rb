@@ -45,6 +45,7 @@ class Contract
   belongs_to :vendor, inverse_of: :contract
   has_many :budgets, inverse_of: :contract
   has_many :invoices, inverse_of: :contract
+  has_many :service_orders, inverse_of: :contract
   has_many :additions, inverse_of: :contract
   has_many :amendment, inverse_of: :contract
   has_many :closures, inverse_of: :contract
@@ -126,7 +127,11 @@ rails_admin do
         end
         field :requesting
         field :process_number, :string
-        field :start_value, :string
+        field :start_value, :string do
+          formatted_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
         field :continuum_service
         field :start_date
         field :finish_date
