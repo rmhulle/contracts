@@ -39,7 +39,7 @@ gem 'rails_admin_rollincode', :git => 'https://github.com/rmhulle/rails_admin_th
 gem 'rails_admin'
 gem "rails_admin_import", "~> 1.4"
 gem 'rails_admin_toggleable'
-gem 'rails_admin_report', :git => 'https://github.com/rmhulle/rails_admin_report.git' #:path => '/Users/rmhulle/Documents/Projetos/Rails/rails_admin_report'
+ #
 gem "mask_validator"
 gem 'money-rails', :git =>'https://github.com/rmhulle/money-rails.git'
 # Use ActiveModel has_secure_password
@@ -47,20 +47,20 @@ gem 'money-rails', :git =>'https://github.com/rmhulle/money-rails.git'
 
 gem "chartkick"
 
-
-
-
 gem 'mina'
 gem 'unicorn'
 gem 'mina-unicorn', require: false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+# group :production do
+#   gem 'rails_admin_report', :git => 'https://github.com/rmhulle/rails_admin_report.git'
+# end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'awesome_print'
+  gem 'rails_admin_report', :path => '/Users/rmhulle/Documents/Projetos/Rails/rails_admin_report'
 end
 
 group :development do

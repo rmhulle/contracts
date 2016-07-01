@@ -64,6 +64,7 @@ class User
         field :job_role, :string
         field :telphone, :string
         field :email, :string
+        field :password, :string
         field :role
 
       end

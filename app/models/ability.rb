@@ -3,13 +3,15 @@ class Ability
   def initialize(user)               # allow everyone to read everything
     if user
       can :access, :rails_admin       # only allow admin users to access Rails Admin
-      can :dashboard                  # allow access to dashboard
+      can :dashboard
+      can :report                  # allow access to dashboard
       if user.role == "NECL"
         can :manage, :all             # allow superadmins to do anything
       elsif user.role == "Fiscal"
-        can :manage, Invoice, :user_id => user.id
-        can :manage, Budget, :user_id => user.id        # =>allow managers to do anything to products and users
-        can :read,   Contract  # allow sales to only update visible products
+        can :manage, Invoice,       :user_id => user.id
+        can :manage, ServiceOrder,  :user_id => user.id
+        can :manage, Budget,        :user_id => user.id        # =>allow managers to do anything to products and users
+        can :read,   Contract                                  # allow sales to only update visible products
       end
     end
   end

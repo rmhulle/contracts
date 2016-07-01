@@ -80,6 +80,20 @@ pt-BR:
         rating_justification: Justificativa
         contract: Contrato
         vendor: Fornecedor
+      service_order:
+        invoice_type: Tipo de Documento
+        competency_date: Data de Competência
+        name: Identificação
+        value: Valor Global
+        emission_date: Data de Emissão
+        expiration_date: Data de Entrega
+        execution_date: Data de Execução
+        process_number: Número do Processo
+        comments: Observações
+        rating: Avaliação
+        rating_justification: Justificativa
+        contract: Contrato
+        vendor: Fornecedor
       accountability:
         ug: Unidade Gestora
         sector: Gerência
@@ -187,3 +201,6 @@ pt-BR:
       site:
         one: Unidade
         other: Unidades
+      service_order:
+        one: Ordem de Serviço
+        other: Ordens de Serviço
