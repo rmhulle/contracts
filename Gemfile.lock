@@ -19,17 +19,18 @@ GIT
       railties (>= 3.0)
 
 GIT
+  remote: https://github.com/rmhulle/rails_admin_report.git
+  revision: 034413c7b5136cbdfc5df9cadcd211d9e425b955
+  specs:
+    rails_admin_report (0.0.2)
+      rails (~> 4.2.6)
+
+GIT
   remote: https://github.com/rmhulle/rails_admin_theme.git
   revision: c56a92dbdc460e29fe17b0253599fdd35ddf9cc8
   specs:
     rails_admin_rollincode (1.0)
       rails (>= 4.0, < 6)
-
-PATH
-  remote: /Users/rmhulle/Documents/Projetos/Rails/rails_admin_report
-  specs:
-    rails_admin_report (0.0.2)
-      rails (~> 4.2.6)
 
 GEM
   remote: https://rubygems.org/
@@ -223,8 +224,8 @@ GEM
     rubyzip (1.2.0)
     safe_yaml (1.0.4)
     sass (3.4.22)
-    sass-rails (5.0.4)
-      railties (>= 4.0.0, < 5.0)
+    sass-rails (5.0.5)
+      railties (>= 4.0.0, < 6)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
@@ -247,8 +248,9 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
-    turbolinks (2.5.3)
-      coffee-rails
+    turbolinks (5.0.0)
+      turbolinks-source (~> 5)
+    turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
