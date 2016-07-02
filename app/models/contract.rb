@@ -1,5 +1,7 @@
 class Contract
   include Mongoid::Document
+  include Mongoid::History::Trackable
+  include Mongoid::Userstamp
 
   field :contract_model, type: String # modalidade de licitação
   field :contract_type,  type: String # Tipo de Instrumento
@@ -55,6 +57,13 @@ class Contract
   has_many :terminations, inverse_of: :contract
   has_one :accountability, :inverse_of => :contract #Fiscal responsáel
 
+  track_history({
+    track_create: true,
+    track_destroy: true,
+    track_update: true,
+    modifier_field: :updater,
+    except: ["created_at", "updated_at", "c_at", "u_at", "clicks", "impressions", "some_other_your_field"],
+  })
 
 # # Validações
 #   def accountability_id
@@ -64,7 +73,8 @@ class Contract
 #     self.accountability = Accountability.find_by_id(id)
 #   end
 
-
+  validates :name, uniqueness: { scope: :contract_type,
+    message: ": Já existe esse instrumento cadatrado" }
   # validates :contract_model, presence: true
   # validates :name, presence: true
   # validates :sign_date, presence: true
@@ -164,17 +174,19 @@ rails_admin do
           end
         end
       end
-      # object_label_method do
-      #   :custom_label_method
-      # end
+       object_label_method do
+         :custom_label_method
+       end
       export do
 
       end
 
 
-
   end
 
+  def custom_label_method
+    "#{self.name} (#{self.contract_type})"
+  end
   def contract_model_enum
     [ 'Concorrência',
       'Convite',

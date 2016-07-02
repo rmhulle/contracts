@@ -1,5 +1,10 @@
 class Amendment
   include Mongoid::Document
+  include Mongoid::History::Trackable
+  include Mongoid::Userstamp
+
+
+
 
   field :name, type: String
   field :amendment_type, type: String # Tipo de Aditivo
@@ -25,6 +30,15 @@ class Amendment
 
   belongs_to :contract
 
+
+  track_history({
+    :scope => :contract,
+    track_create: true,
+    track_destroy: true,
+    track_update: true,
+    modifier_field: :updater,
+    except: ["created_at", "updated_at", "c_at", "u_at", "clicks", "impressions", "some_other_your_field"],
+  })
   # validates :name, presence: true
   # validates :amendment_type, presence: true
   # validates :publication_date, presence: true
@@ -85,7 +99,11 @@ class Amendment
         field :object
         field :process_number, :string
 
-        field :amendment_value, :string
+        field :amendment_value, :string do
+          formatted_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
 
         field :start_date
         field :finish_date

@@ -1,6 +1,7 @@
 class Accountability
   include Mongoid::Document
-
+  include Mongoid::History::Trackable
+  include Mongoid::Userstamp
 
   field :ug,                   type: String
   #field :sector,               type: String
@@ -14,9 +15,18 @@ class Accountability
 
   belongs_to :contract, dependent: :destroy, :inverse_of => :accountability
 
-
   before_save :update_contract
 
+
+  # Auditoria
+  track_history({
+    :scope => :contract,
+    track_create: true,
+    track_destroy: true,
+    track_update: true,
+    modifier_field: :updater,
+    except: ["created_at", "updated_at", "c_at", "u_at", "clicks", "impressions", "some_other_your_field"],
+  })
   rails_admin do
 
       navigation_label 'NECC'
@@ -29,14 +39,21 @@ class Accountability
       end
 
       edit do
-        exclude_fields :created_at, :updated_at
+
         field :contract do
           inline_edit false
+          inline_add false
         end
         field :user do
           inline_edit false
           inline_add false
         end
+        field :document_type, :string
+        field :lore_date
+        field :accountability_type
+        field :active
+        field :supervisor_change
+
       end
 
       show do

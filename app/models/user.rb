@@ -65,8 +65,11 @@ class User
         field :telphone, :string
         field :email, :string
         field :password, :string
-        field :role
-
+        field :role do
+          visible do
+            bindings[:view]._current_user.role == 'NECL'
+          end
+        end
       end
 
       show do
@@ -78,7 +81,12 @@ class User
         field :role
         field :last_sign_in_at
       end
-
+      update do
+        exclude_fields(:password, :password_confirmation)
+      end
+      change_password do
+        exclude_fields(:email, :role)
+      end
       # object_label_method do
       #   :custom_label_method
       # end

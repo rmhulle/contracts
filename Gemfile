@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem "bootstrap-sass"
+
 # Banco de Dados Mongo
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
@@ -35,11 +36,12 @@ gem 'jquery-inputmask-rails'
 ## Interface de Admin
 gem "wysiwyg-rails"
 gem 'icheck-rails'
+gem 'rails_admin_change_password', git: 'https://github.com/cec/rails_admin_change_password.git'
 gem 'rails_admin_rollincode', :git => 'https://github.com/rmhulle/rails_admin_theme.git'
 gem 'rails_admin'
 gem "rails_admin_import", "~> 1.4"
 gem 'rails_admin_toggleable'
- #
+gem 'mongoid-audit'
 gem "mask_validator"
 gem 'money-rails', :git =>'https://github.com/rmhulle/money-rails.git'
 # Use ActiveModel has_secure_password
@@ -61,6 +63,7 @@ group :development, :test do
   gem 'byebug'
   gem 'awesome_print'
   gem 'rails_admin_report', :path => '/Users/rmhulle/Documents/Projetos/Rails/rails_admin_report'
+  gem 'rack-mini-profiler', require: false
 end
 
 group :development do

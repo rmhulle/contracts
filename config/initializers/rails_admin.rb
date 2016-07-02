@@ -1,16 +1,21 @@
 RailsAdmin.config do |config|
 
   ### Popular gems integration
-config.main_app_name = ["Sistema de Contratos", ""]
+config.main_app_name = ["SIC - ", "Secretaria de Saúde"]
   ## == Devise ==
   config.authenticate_with do
     warden.authenticate! scope: :user
   end
   config.current_user_method(&:current_user)
-
+  config.configure_with(:import) do |config|
+    config.logging = true
+  end
   ## == Cancan ==
    config.authorize_with :cancan
 
+  ## Auditoria ==
+  #  config.audit_with :histeroid, User
+  config.audit_with :mongoid_audit
   ## == Pundit ==
   # config.authorize_with :pundit
 
@@ -34,8 +39,8 @@ config.main_app_name = ["Sistema de Contratos", ""]
     show_in_app
     toggle
     ## With an audit adapter, you can add:
-    # history_index
-    # history_show
+    #history_index
+    history_show
 
   end
 end
