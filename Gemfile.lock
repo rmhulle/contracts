@@ -19,18 +19,17 @@ GIT
       railties (>= 3.0)
 
 GIT
-  remote: https://github.com/rmhulle/rails_admin_report.git
-  revision: 034413c7b5136cbdfc5df9cadcd211d9e425b955
-  specs:
-    rails_admin_report (0.0.2)
-      rails (~> 4.2.6)
-
-GIT
   remote: https://github.com/rmhulle/rails_admin_theme.git
   revision: c56a92dbdc460e29fe17b0253599fdd35ddf9cc8
   specs:
     rails_admin_rollincode (1.0)
       rails (>= 4.0, < 6)
+
+PATH
+  remote: /Users/rmhulle/Documents/Projetos/Rails/rails_admin_report
+  specs:
+    rails_admin_report (0.0.2)
+      rails (~> 4.2.6)
 
 GEM
   remote: https://rubygems.org/
@@ -95,7 +94,7 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
-    devise (4.1.1)
+    devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
@@ -237,8 +236,8 @@ GEM
       nokogiri
       rubyzip
     sixarm_ruby_unaccent (1.1.1)
-    spring (1.7.1)
-    sprockets (3.6.2)
+    spring (1.7.2)
+    sprockets (3.6.3)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.1.1)

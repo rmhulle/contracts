@@ -24,13 +24,13 @@ Mina
 
 == TODO
 
-* Separar (ATA de Contrato) Medicão de Ordem de Fornecimento
+* Separar (ATA de Contrato) Medicão de Ordem de Fornecimento [Done]
 * Alerta para inserir valor das notas
 * Alerta para vigência contratual
-* Acertar permissão do Atributo nome no formulágio de Registro Externo
+* Acertar permissão do Atributo nome no formulágio de Registro Externo [Done]
 * Trocar Senha e Esquecer Senha
-* Separar Atas e Contratos no Email (Tirar Data de COmpetência da Ordem de Serviços)
+* Separar Atas e Contratos no Email (Tirar Data de COmpetência da Ordem de Serviços) [Done]
 * Logica justificativa de avaliação obrigatrio caso insatisfatório
 * Criar Saldo Residual
 * Sistema de informações contratuais
-* Acertar datas para xx/xx/xxxx
+* Acertar datas para xx/xx/xxxx 
