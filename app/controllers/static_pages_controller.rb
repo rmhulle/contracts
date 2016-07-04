@@ -4,6 +4,9 @@ class StaticPagesController < ApplicationController
   end
 
   def report
+
+    Deadline.week_deadline_email(User.first).deliver
+
     map = %Q{
       function() {
         emit(this.object_type, 1 );

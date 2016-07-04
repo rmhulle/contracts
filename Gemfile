@@ -30,9 +30,6 @@ gem 'devise'
 gem 'cancancan'
 gem 'jquery-inputmask-rails'
 
-
-
-
 ## Interface de Admin
 gem "wysiwyg-rails"
 gem 'icheck-rails'
@@ -46,8 +43,9 @@ gem "mask_validator"
 gem 'money-rails', :git =>'https://github.com/rmhulle/money-rails.git'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+#gem 'roadie-rails'
 gem "chartkick"
+gem 'premailer-rails'
 
 gem 'mina'
 gem 'unicorn'

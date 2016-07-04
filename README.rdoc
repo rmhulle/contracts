@@ -34,6 +34,9 @@ o tipo de instrumento antes de avaliar.
 
 
 == TODO
+* Colocar minimo de css no email. Roadie Gem ou
+* email e cadatro na plataforma
+*
 * Alerta para inserir valor das notas + Lógica de Email
 * Alerta para vigência contratual + Lógica de Email
 * Trocar Senha e Esquecer Senha [https://github.com/cec/rails_admin_change_password]
