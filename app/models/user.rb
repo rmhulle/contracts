@@ -64,12 +64,14 @@ class User
         field :job_role, :string
         field :telphone, :string
         field :email, :string
-        field :password, :string
+        # field :password, :string
         field :role do
           visible do
-            bindings[:view]._current_user.role == 'NECL'
+            if ['NECL', 'Admin'].include? bindings[:view]._current_user.role
+            end
           end
         end
+
       end
 
       show do
@@ -80,17 +82,16 @@ class User
         field :email, :string
         field :role
         field :last_sign_in_at
+        field :accountabilities
       end
-      update do
-        exclude_fields(:password, :password_confirmation)
-      end
-      change_password do
-        exclude_fields(:email, :role)
-      end
+
       # object_label_method do
       #   :custom_label_method
       # end
 
+  end
+  def know_user
+    self._id
   end
   def role_enum
     ['NECL', 'Admin', 'Fiscal']

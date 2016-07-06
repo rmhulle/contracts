@@ -27,8 +27,7 @@ config.main_app_name = ["SIC - ", "Secretaria de Saúde"]
   config.actions do
     dashboard
     report            # mandatory
-    index
-                       # mandatory
+    index                   # mandatory
     new
     export
     import
@@ -41,6 +40,8 @@ config.main_app_name = ["SIC - ", "Secretaria de Saúde"]
     ## With an audit adapter, you can add:
     #history_index
     history_show
+
+
 
   end
 end

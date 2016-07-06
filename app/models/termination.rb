@@ -18,12 +18,12 @@ class Termination
         field :contract
       end
 
-      edit do
+      edit do #TODO permitir contratos que ainda não estão encerrados ainda
         field :contract do
           inline_add false
           inline_edit false
         end
-        field :name
+        field :name, :string
         field :justification
         field :process_number, :string
         field :publication_date

@@ -34,7 +34,7 @@ class Contract
 
   field :observation, type: String # Observações
   field :user_id
-  field :active, type: Boolean
+  field :active, type: Boolean, default: true
 
 # Variáveis para uso do sistema
 
@@ -98,14 +98,14 @@ rails_admin do
       navigation_label 'NECC'
 
       list do
-        scopes [nil, :Emergencial, :Prazo]
-        field :name
+        scopes [:Vigentes, :Emergencial, :Prazo, :Encerrados, nil]
+        field :name do # (3)
+          searchable [:name, :requesting]
+        end
         field :contract_type
         field :contract_model
         field :object_type
-        field :last_finish_date do
-          strftime_format "%d-%m-%Y"
-        end
+        field :last_finish_date
         field :total_value do
           pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
             humanized_money_with_symbol(value)
@@ -115,7 +115,6 @@ rails_admin do
       end
 
       edit do
-
         field :contract_model
         field :contract_type
         field :name, :string
@@ -147,12 +146,30 @@ rails_admin do
         field :finish_date
         field :observation
 
-
-
       end
 
       show do
-        exclude_fields :id, :created_at, :updated_at, :user_id
+        field :name
+        field :contract_model
+        field :contract_type
+        field :sign_date
+        field :publication_date
+        field :vendor
+        field :activity
+        field :expense_item
+        field :federal_account_source
+        field :state_account_source
+        field :other_account_source
+        field :start_date
+        field :finish_date
+        field :last_finish_date
+        field :object_type
+        field :object
+        field :requesting
+        field :process_number
+        field :start_value
+        field :continuum_service
+        field :observation
         field :total_value do
           pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
             humanized_money_with_symbol(value)
@@ -173,6 +190,24 @@ rails_admin do
             humanized_money_with_symbol(value)
           end
         end
+
+        # Lista de Associações
+        field :budgets
+        field :invoices
+        field :service_orders
+        field :additions
+        field :amendment
+        field :closures
+        field :fines
+        field :notifications
+        field :reratifications
+        field :terminations
+        field :accountability
+
+
+
+
+        field :active
       end
        object_label_method do
          :custom_label_method
@@ -220,9 +255,10 @@ rails_admin do
     self.last_finish_date = self.finish_date
   end
 
-  scope :Emergencial, -> { where(contract_model: 'Emergencial (art. 24, IV)') }
-  scope :Prazo, -> { where( :finish_date => { :$lte => Time.now + 120.days}) }
-  # scope :by_sector, -> (sector) { where(requesting: sector) }
+  scope :Emergencial, -> { where(contract_model: 'Emergencial (art. 24, IV)', active: true) }
+  scope :Prazo, -> { where( :finish_date => { :$lte => Time.now + 120.days}, active: true) }
+  scope :Encerrados, -> { where(active: false) }
+  scope :Vigentes, -> { where(active: true) }  # scope :by_sector, -> (sector) { where(requesting: sector) }
 
 
 

@@ -18,7 +18,7 @@ class Vendor
 
       list do
         field :name do
-          column_width 500
+          column_width 425
         end
         field :register
         field :register_type
@@ -29,11 +29,16 @@ class Vendor
         field :register_type
         field :register, :string
         field :warning
-        exclude_fields :created_at, :updated_at, :contracts, :invoices
       end
 
       show do
-        exclude_fields :id, :created_at, :updated_at
+        field :name
+        field :register
+        field :register_type
+        field :warning
+        field :contracts
+        field :invoices
+        field :service_orders
       end
 
       object_label_method do

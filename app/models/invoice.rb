@@ -1,7 +1,7 @@
 class Invoice
   include Mongoid::Document
 
-  field :invoice_type, type: String, default: 'Medicão'#Tipo: é medição ou OS?
+  field :invoice_type, type: String, default: 'Medicão' # Tipo: é medição ou OS?
   # field :name, type: String # Número da Ordem de Fornecimento/Medição
 
   field :competency_date, type: String # Data de Competencia
@@ -64,7 +64,12 @@ class Invoice
         field :emission_date
         field :process_number, :string
         field :execution_date
-        field :value, :string
+        field :value, :string do
+          formatted_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
+
         field :comments
         field :rating
         field :rating_justification
@@ -78,12 +83,21 @@ class Invoice
       end
 
       show do
-        exclude_fields :id, :created_at, :updated_at, :user_id
+        field :invoice_type
+        field :competency_date
+        field :emission_date
+        field :process_number
+        field :execution_date
         field :value do
-          pretty_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+          pretty_value do # used in list view columns and show views
             humanized_money_with_symbol(value)
           end
         end
+        field :comments
+        field :rating
+        field :rating_justification
+
+
       end
       # object_label_method do
       #   :custom_label_method

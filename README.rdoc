@@ -30,16 +30,23 @@ Mina
 * Inserção de Hsitórico (https://github.com/aq1018/mongoid-history)
 * Adicionado validação de unicidade de contratos para evitar repetições, ele leva me conta
 o tipo de instrumento antes de avaliar.
+* Colocar minimo de css no email. Roadie Gem ou
+* Incluir Trackable em todos modelos (https://github.com/rs-pro/mongoid-audit)
+* Trocar Senha e Esquecer Senha [https://github.com/cec/rails_admin_change_password]
+* condicionantes para contrato vigente ou não (Alterar informações)
+* Separar na tela de OS e Medicao só o que é ata e o que é contrato.
+* Acertar datas para xx/xx/xxxx
+* Acertar Título - Sistema de informações contratuais
+* Acertar o Edit, show Money value em todos seguindo padrão do contrcats
+
+
 
 
 
 == TODO
-* Colocar minimo de css no email. Roadie Gem ou
-* email e cadatro na plataforma
-*
+* email de cadatro como Fiscal na plataforma com link de confirmação (https://www.youtube.com/watch?v=EycP9L_x5rE)
 * Alerta para inserir valor das notas + Lógica de Email
 * Alerta para vigência contratual + Lógica de Email
-* Trocar Senha e Esquecer Senha [https://github.com/cec/rails_admin_change_password]
 * Logica justificativa de avaliação obrigatrio caso insatisfatório (http://stackoverflow.com/questions/13750436/rails-validating-a-field-is-present-only-if-another-is-present)
 * Criar Saldo Residual
 * Acertar Permissão de cadatro e alteração de senhas no Rails Admin
@@ -48,26 +55,17 @@ o tipo de instrumento antes de avaliar.
 * Relatorios analiticos
 * Trocar report por kpi (hj temos inicadores e não )
 * Traduzir os textos debaixo dos campos de help
-* condicionantes para contrato vigente ou não (Alterar informações)
 * Importar todos usuários
-* Acertar o Edit, show Money value em todos seguindo padrão do contrcats
-* Incluir Trackable em todos modelos (https://github.com/rs-pro/mongoid-audit)
 
 == Melhorias
-* Acertar datas para xx/xx/xxxx
-* Acertar Título - Sistema de informações contratuais
+
 * Adicionar Rating System no Fornecedor (https://github.com/keitoaino/rails_admin_rate_field)
 no fim no encerramento do contrato
 * Relatório em PDF (https://github.com/CruxConsulting/rails_admin_show_pdf)
 * Ferramentas de admin (https://github.com/astrails/rails_admin_impersonate)
 * Criar Tags nos Contratos (https://github.com/kryzhovnik/rails_admin_tag_list)
 * Incluir chnce de vincular accountbility direto no modelo do usuário (se der pra ele não editar)
-
-
-
-
-
-
+** Super Admin pode editar todos campos pra corrigir falhas.
 
 
 == importar lista de usuários via console

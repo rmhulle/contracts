@@ -35,7 +35,11 @@ class Budget
         end
         field :name, :string
         field :date
-        field :value, :string
+        field :value, :string do
+          formatted_value do # used in list view columns and show views, defaults to formatted_value for non-association fields
+            humanized_money_with_symbol(value)
+          end
+        end
         field :contract do
           associated_collection_scope do
             user_now = bindings[:controller].current_user.id

@@ -14,15 +14,13 @@ class Site
       end
 
       edit do
-        field :name
+        field :name, :string
         field :subsecretary
       end
 
       show do
         field :name
         field :subsecretary
-
-
       end
 
       object_label_method do

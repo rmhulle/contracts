@@ -101,6 +101,10 @@ pt-BR:
         title: "Histórico para %{model_label} '%{object_label}'"
         menu: "Histórico"
         breadcrumb: "Histórico"
+      change_password:
+        title: "Trocar a Senha para '%{object_label}'"
+        menu: "Trocar Senha"
+        breadcrumb: "Trocar Senha"
     form:
       cancel: "Cancelar"
       basic_info: "Informação Básica"

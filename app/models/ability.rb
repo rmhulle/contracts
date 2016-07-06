@@ -4,17 +4,25 @@ class Ability
     if user
       can :access, :rails_admin
       can :dashboard
-      can :report                  # allow access to dashboard
+      can :report
       if user.role == "NECL"
         can :manage, :all
-        can :import, :all    # allow superadmins to do anything
+        cannot :history, :all
+        cannot :manage, Site
+        cannot :destroy, User
+
       elsif user.role == "Fiscal"
         # can :edit, User,              :user_id => user.id   # only allow admin users to access Rails Admin
         can :manage, Invoice,       :user_id => user.id
         can :manage, ServiceOrder,  :user_id => user.id
-        can :manage, Budget,        :user_id => user.id        # =>allow managers to do anything to products and users
+        can :manage, Budget,        :user_id => user.id
         can :read,   Contract,      :user_id => user.id
-        can :edit,   User                               # allow sales to only update visible products
+        can :update, User,          _id: user.id
+        cannot :history, :all
+      elsif user.role == "Admin"
+        # can :edit, User,              :user_id => user.id   # only allow admin users to access Rails Admin
+        can :manage, :all
+        can :import, :all    # allow superadmins to do anything
       end
     end
   end

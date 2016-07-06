@@ -2,16 +2,11 @@ class ServiceOrder
   include Mongoid::Document
   field :invoice_type, type: String, default: 'Ordem de Fornecimento'  #Tipo: é medição ou OS?
   field :name, type: String # Número da Ordem de Fornecimento/Medição
-
-
   field :emission_date, type: Date # Data de Emissão
   field :deadline_date, type: Date # Data de Entrega
   field :process_number, type: String # Número do Processo
 
   field :value, type: Money # Valor Global da Medição ou Ordem de Serviço
-
-
-
   field :comments, type: String
   field :user_id
 
@@ -57,8 +52,9 @@ class ServiceOrder
             #Só pode adicionar ordens de serviço em contratos do TIPO
             #Termo de adesão ou Ata e cujo o usuário ja foi setado como fiscal
             Proc.new { |scope|
-              scope = Contract.where({ user_id: user_now }).or({ contract_type: 'Termo de Adesão' },
+              scope = Contract.where({ user_id: user_now, active: true }).or({ contract_type: 'Termo de Adesão' },
                                                                { contract_type: 'Ata de Registro' })
+
             }
           end
         end

@@ -3,15 +3,49 @@ class StaticPagesController < ApplicationController
     #code
   end
 
-  def report
+  def aceptance_email
+    
+  end
 
-    Deadline.week_deadline_email(User.first).deliver
+  def map_reduce
+    map= %Q{
+      function() {
+        emit(this.name, {count: 1, price: 2, requesting: this.requesting, vendor: this.vendor_id} );
+      }
+    }
+
+
+    reduce = %Q{
+      function(key, values) {
+        var result = { count: 0,
+                       price: 0,
+                       requesting: "",
+                       vendor: ""};
+        values.forEach(function(value) {
+          result.count += value.count;
+          result.price  += value.price;
+          result.requesting = value.requesting;
+          result.vendor = {$in : db.vendors.findOne({"_id" : vendor})};
+
+        });
+        return result;
+      }
+    }
+
+    @bi_map = Contract.includes(:vendor).map_reduce(map, reduce).out(replace: "bi_db")
+
+  end
+
+
+  def report
 
     map = %Q{
       function() {
         emit(this.object_type, 1 );
       }
     }
+
+
 
     reduce = %Q{
       function(key, values) {
@@ -22,9 +56,7 @@ class StaticPagesController < ApplicationController
         return result;
       }
     }
-    contracts = Contract.map_reduce(map, reduce).out(replace: "teest")
-    @chart = Hash[contracts.map do |item|
-      [item['_id'], item['value']]
-    end]
+    contracts = Contract.map_reduce(map, reduce).out(replace: "Full")
+
   end
 end

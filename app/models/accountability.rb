@@ -48,7 +48,7 @@ class Accountability
           inline_edit false
           inline_add false
         end
-        field :document_type, :string
+        field :document_type
         field :lore_date
         field :accountability_type
         field :active
@@ -102,5 +102,8 @@ class Accountability
        valor = Site.pluck(:name)
   end
 
+  def document_type_enum
+    ['Ato de Designação' ,'Apostilamento' ,'Contrato']
+  end
 
 end

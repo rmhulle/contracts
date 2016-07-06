@@ -6,16 +6,28 @@
     padding: 15px 15px;
     font-size: 18px;
     line-height: 20px;
-    height: 50px;
-    width: 240px;
+    height: 75px;
+    width: auto;
+    color: white;
+    img {
+        display: block;
+        margin-top: -4px;
+        }
 }
 
-#jumbotron div  {
-    margin-top: 75px;
+.jumbotron {
+    margin-top: 150px;
     .container {
         margin-top: 10px;
     }
 }
+
+h2 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
 
 .navbar-blue {
     background-color: #208BAA;
@@ -37,7 +49,7 @@
 
 
 .navbar-form.navbar-right {
-    margin-top: 17px;
+    margin-top: 10px;
 
 }
 
@@ -55,4 +67,5 @@ margin-bottom: 5px;
 .form p {
     text-align: justify;
     font-size: small;
+    margin-top: 5px;
 }
