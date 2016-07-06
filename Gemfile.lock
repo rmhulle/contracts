@@ -26,17 +26,18 @@ GIT
       railties (>= 3.0)
 
 GIT
+  remote: https://github.com/rmhulle/rails_admin_report.git
+  revision: 428f6b02daf31127186da116d20452ea14c5248d
+  specs:
+    rails_admin_report (0.0.2)
+      rails (~> 4.2.6)
+
+GIT
   remote: https://github.com/rmhulle/rails_admin_theme.git
   revision: c063402d5a9a2e23d03ebd4f83be9ec690d40a61
   specs:
     rails_admin_rollincode (1.0)
       rails (>= 4.0, < 6)
-
-PATH
-  remote: /Users/rmhulle/Documents/Projetos/Rails/rails_admin_report
-  specs:
-    rails_admin_report (0.0.2)
-      rails (~> 4.2.6)
 
 GEM
   remote: https://rubygems.org/
@@ -142,6 +143,8 @@ GEM
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kaminari-mongoid (0.1.2)
+      kaminari
     kgio (2.10.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -166,16 +169,20 @@ GEM
       sixarm_ruby_unaccent (>= 1.1.1, < 2)
     mongo (2.1.0.beta)
       bson (~> 3.0)
-    mongoid-audit (1.1.0)
+    mongoid-audit (1.2.2)
       activesupport
       glebtv_mongoid_userstamp
-      kaminari
-      mongoid (>= 4.0.0, < 6.0)
-      mongoid-history (~> 0.4.5)
-    mongoid-history (0.4.7)
+      kaminari-mongoid
+      mongoid (>= 4.0.0, < 7.0)
+      mongoid-history (~> 0.5.0)
+    mongoid-compatibility (0.4.0)
+      activesupport
+      mongoid (>= 2.0)
+    mongoid-history (0.5.0)
       activesupport
       easy_diff
       mongoid (>= 3.0)
+      mongoid-compatibility
     multi_json (1.12.1)
     nested_form (0.3.2)
     nokogiri (1.6.8)
@@ -188,7 +195,7 @@ GEM
     premailer (1.8.7)
       css_parser (>= 1.4.5)
       htmlentities (>= 4.0.0)
-    premailer-rails (1.9.3)
+    premailer-rails (1.9.4)
       actionmailer (>= 3, < 6)
       premailer (~> 1.7, >= 1.7.9)
     rack (1.6.4)

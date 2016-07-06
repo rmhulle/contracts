@@ -54,13 +54,13 @@ gem 'mina-unicorn', require: false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # group :production do
-  # gem 'rails_admin_report', :git => 'https://github.com/rmhulle/rails_admin_report.git'
+ gem 'rails_admin_report', :git => 'https://github.com/rmhulle/rails_admin_report.git'
 # end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'awesome_print'
-  gem 'rails_admin_report', :path => '/Users/rmhulle/Documents/Projetos/Rails/rails_admin_report'
+#  gem 'rails_admin_report', :path => '/Users/rmhulle/Documents/Projetos/Rails/rails_admin_report'
   gem 'rack-mini-profiler', require: false
 end
 
