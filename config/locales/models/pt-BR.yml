@@ -29,11 +29,11 @@ pt-BR:
         contract: Contrato
         observation: Observações
       addition:
-        name: Número do Apostilamento
+        name: Apostilamento
         object: Objeto
         description: Descrição
         adjustment_percentage: Percentual de Reajuste
-        start_date: Data de Início do Reajuste
+        start_date: Início do Reajuste
         contract: Contrato
         adjustment_total_value: Valor Total do Reajuste
       closure:
@@ -136,6 +136,7 @@ pt-BR:
         accountability: Responsáveis
         fines: Multas
         invoices: Medições
+        service_orders: Ordem de Serviços
         notifications: Notificações
         total_value: Valor Global Atual
         reratifications: Rerratificações

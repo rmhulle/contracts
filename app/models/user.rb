@@ -67,10 +67,10 @@ class User
         # field :password, :string
         field :role do
           visible do
-            if ['NECL', 'Admin'].include? bindings[:view]._current_user.role
+            (bindings[:view]._current_user.role == 'NECL' || bindings[:view]._current_user.role == 'Admin')
             end
           end
-        end
+
 
       end
 
@@ -90,10 +90,8 @@ class User
       # end
 
   end
-  def know_user
-    self._id
-  end
+
   def role_enum
-    ['NECL', 'Admin', 'Fiscal']
+    [ 'Fiscal', 'NECL', 'Admin']
   end
 end

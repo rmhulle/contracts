@@ -10,7 +10,6 @@ class Ability
         cannot :history, :all
         cannot :manage, Site
         cannot :destroy, User
-
       elsif user.role == "Fiscal"
         # can :edit, User,              :user_id => user.id   # only allow admin users to access Rails Admin
         can :manage, Invoice,       :user_id => user.id

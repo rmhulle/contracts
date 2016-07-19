@@ -99,9 +99,9 @@ class Invoice
 
 
       end
-      # object_label_method do
-      #   :custom_label_method
-      # end
+      object_label_method do
+       :custom_label_method
+      end
 
   end
 
@@ -119,6 +119,9 @@ class Invoice
     contrato.save
   end
 
+  def custom_label_method
+    "#{self.competency_date}"
+  end
 
   def rating_enum
     ['Satisfatória',

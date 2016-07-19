@@ -203,10 +203,6 @@ rails_admin do
         field :reratifications
         field :terminations
         field :accountability
-
-
-
-
         field :active
       end
        object_label_method do
@@ -256,7 +252,7 @@ rails_admin do
   end
 
   scope :Emergencial, -> { where(contract_model: 'Emergencial (art. 24, IV)', active: true) }
-  scope :Prazo, -> { where( :finish_date => { :$lte => Time.now + 120.days}, active: true) }
+  scope :Prazo, -> { where( :finish_date => { :$lte => Time.now + 180.days}, active: true) }
   scope :Encerrados, -> { where(active: false) }
   scope :Vigentes, -> { where(active: true) }  # scope :by_sector, -> (sector) { where(requesting: sector) }
 
